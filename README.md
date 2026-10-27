@@ -2,7 +2,7 @@
 
 # Corgi RL
 
-**A small quadruped, built from simulation to hardware.**
+**A quadruped with a local motion policy and planned IMPO integration.**
 
 Corgi RL is an open-source, low-cost **12-DoF quadruped** project. It brings a
 calibratable robot model, stand and walk tasks, and a shared policy interface
@@ -12,9 +12,26 @@ RK3576 board.
 *The image above is a Gemini-generated concept render of the proposed appearance.
 It is not a photograph, a validated mechanical design, or the current simulator model.*
 
-**Status: initial repository, ready for design review.** PPO training has not
-started. Walking and hardware operation have not been validated. Initial
-dimensions, masses, and actuator parameters are estimates.
+**Status: the bounded GPU smoke pipeline passed on October 27, 2026.**
+Stand and walk each completed two PPO iterations, ONNX export, and a three-second
+replay. This does not establish a learned gait, convergence, or hardware readiness.
+Initial dimensions, masses, and actuator parameters remain estimates.
+
+## Local motion policy + IMPO
+
+Corgi is designed to be an **IMPO gadget with its own motion controller**.
+The local policy handles joint control, standing and locomotion. IMPO provides
+the agent interface: user intent, tasks, gadget commands and device events.
+The planned RK3576 runtime connects these layers through a device adapter.
+
+IMPO sends bounded motion goals; the local controller converts them into policy
+inputs and joint targets at 50 Hz. Device status returns to IMPO. Local control,
+command expiry and safe stopping must remain independent of network availability.
+
+The simulation, PPO and ONNX path is smoke-tested. **RK3576 deployment and IMPO
+integration are planned, not implemented.** See the
+[integration design](docs/impo-integration.md) and the existing
+[IMPO Gadget SDK](https://github.com/impoai/impo-gadget-sdk).
 
 ## Architecture
 
@@ -28,6 +45,9 @@ flowchart LR
     S --> V
     C -. Planned .-> H[RK3576 + smart servos]
     S -. After calibration .-> H
+    I[IMPO agent] -. Planned task and motion goals .-> A[Device adapter]
+    A -. Local policy inputs .-> H
+    H -. Status and device events .-> I
 ```
 
 Each leg has three actuated joints: hip abduction, hip pitch, and knee pitch.
@@ -42,7 +62,7 @@ The proposed shell and corgi-like appearance are a separate design step.
 | `src/corgi_rl/tasks.py` | Standing and velocity-tracking tasks |
 | `src/corgi_rl/train.py` | PPO, checkpoints, ONNX export, and export error checks |
 | `src/corgi_rl/native.py` | Native MuJoCo replay, metrics, and H.264 video |
-| `tests/` | Specification, model, fixed-PD standing, and pending GPU tests |
+| `tests/` | Specification, model, fixed-PD standing, GPU resets and physics contracts |
 | `hardware/` | Calibration plan and supplier data requirements |
 | `deploy/` | RK3576 interface, remote smoke test, and Slurm template |
 | `docs/design.md` | Technical choices and implementation boundaries |
@@ -52,19 +72,30 @@ The proposed shell and corgi-like appearance are a separate design step.
 
 ## Verified so far
 
-Checks ran on October 27, 2026, inside the remote cluster's PyTorch container:
+The run used one NVIDIA H200, MuJoCo Warp for simulation, and PPO on CUDA.
+All six tests passed in 16.30 seconds. They check native model/calibration,
+fixed-PD standing, seeded replay, and GPU stepping, reset, fall termination,
+initial observations, physics settings, actuator gains/limits and ground friction.
 
-- **Four basic tests passed:** model/specification consistency, invalid input
-  rejection, three seconds of fixed-PD standing, and repeatable seeded replay.
-- The model compiles to `nq=19`, `nv=18`, and `nu=12`: a floating base and
-  12 actuated joints.
-- The standing test checks fall status, body height, and the 2.5 N·m torque limit.
-- Dependency locking and installation completed. The MJCF was generated.
-- Static checks passed, and the stand configuration was constructed.
+| Check | Stand | Walk |
+|---|---:|---:|
+| PPO iterations | 2 | 2 |
+| Simulated transitions | 1,536 | 1,536 |
+| Maximum policy parameter change | 0.004280 | 0.004404 |
+| ONNX/PyTorch maximum absolute error | 1.01e-7 | 8.94e-8 |
+| Replay duration | 3 seconds | 3 seconds |
+| Fall during this replay | None | None |
+| Mean XY velocity error | 0.00862 m/s | 0.20554 m/s |
 
-GPU stepping and resets, PPO updates, checkpoint recovery, ONNX numerical
-checks, video rendering, and hardware tests remain pending. An implemented
-entry point is not a passed test. Training is on hold for repository review.
+The walk replay commands 0.2 m/s forward speed. Its error remains about the
+command magnitude: **the smoke policy has not learned useful walking**.
+Each task has a saved checkpoint, ONNX graph, calibration manifest and H.264 video.
+The native CPU simulator and OSMesa renderer ran on the remote compute node.
+EGL was unavailable on that node; CUDA training was verified separately.
+
+[Stand replay](docs/assets/smoke-stand.mp4) ·
+[Walk replay](docs/assets/smoke-walk.mp4) ·
+[Detailed validation](docs/status.md)
 
 ## Stack
 
@@ -82,8 +113,9 @@ Python environments, package installation, simulation, training, and tests run
 on the remote NVIDIA environment. The development Mac is for source editing.
 Do not execute the following installation or runtime commands on that Mac.
 
-The commands below are for use after review. **The training commands have not
-been run.** Use Linux x86_64, Python 3.11, an NVIDIA GPU, and a working EGL setup.
+Use Linux x86_64, Python 3.11, and an NVIDIA GPU. Prepare the rendering libraries
+and environment variables using [the remote runtime guide](docs/remote-runtime.md)
+before running these bounded commands. The verified rendering backend is OSMesa.
 Private cluster addresses, credentials, and access instructions are kept outside
 this repository.
 
@@ -101,7 +133,7 @@ uv run --locked corgi train --task walk --output runs/walk-smoke \
   --num-envs 32 --steps 24 --iterations 2
 
 # Replay the exported policy and save metrics with an H.264 video.
-MUJOCO_GL=egl uv run --locked corgi evaluate --task walk \
+uv run --locked corgi evaluate --task walk \
   --policy runs/walk-smoke/policy.onnx --seconds 5 --video runs/walk-smoke.mp4
 ```
 
@@ -139,10 +171,10 @@ See the [calibration plan](hardware/README.md) and [deployment interface](deploy
 
 ## Next steps
 
-1. Review the robot specification, interfaces, and repository structure.
-2. Run environment tests on one H200 and fix any issues they expose.
-3. Run bounded PPO, checkpoint, ONNX, and rendering checks with recorded results.
-4. Obtain and calibrate real actuator and mechanical parameters before larger runs.
+1. Review the smoke videos, shared specification and robot geometry.
+2. Validate checkpoint recovery and dynamic cross-backend trajectories.
+3. Improve gait rewards and evaluate broader seeds before authorizing longer training.
+4. Obtain and calibrate real actuator and mechanical parameters before hardware work.
 
 ## License
 

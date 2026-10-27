@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-27",
+  "device": "NVIDIA H200",
+  "tests": {
+    "passed": 6,
+    "seconds": 16.3
+  },
+  "spec_sha256": "f6058f822e56d759c17377d201cf6521dc5e6531279b648636be93a18406882c",
+  "convergence_claim": false,
+  "tasks": {
+    "stand": {
+      "training": {
+        "iterations": 2,
+        "transitions": 1536,
+        "max_policy_parameter_change": 0.004279740620404482,
+        "onnx_max_abs_error": 1.0058283805847168e-7,
+        "elapsed_s": 5.8279639864340425,
+        "convergence_claim": false
+      },
+      "replay": {
+        "backend": "native-mujoco-cpu",
+        "task": "stand",
+        "seed": 42,
+        "render_backend": "osmesa",
+        "duration_s": 3,
+        "steps": 150,
+        "first_fall_s": null,
+        "mean_xy_velocity_error_m_s": 0.00862394149156585,
+        "minimum_body_height_m": 0.21348925659442144,
+        "maximum_torque_nm": 1.0326437281607959,
+        "spec_sha256": "f6058f822e56d759c17377d201cf6521dc5e6531279b648636be93a18406882c",
+        "convergence_claim": false
+      },
+      "specification_mismatch_rejected": true,
+      "ort_thread_comparison_samples": 16,
+      "ort_thread_max_abs_error": 0,
+      "checkpoint_keys": [
+        "actor_state_dict",
+        "critic_state_dict",
+        "infos",
+        "iter",
+        "optimizer_state_dict"
+      ],
+      "artifacts": {
+        "checkpoint.pt": {
+          "bytes": 577141,
+          "sha256": "7df94ad9a155d6a71378482a03b8b57ffd231c5262677c9840bdfabce22fd4e4"
+        },
+        "policy.onnx": {
+          "bytes": 97268,
+          "sha256": "fafc60c58989ebd762a8d16c4fc7eab69acb577c611479b95377e46898807732"
+        }
+      },
+      "onnx_input": [
+        1,
+        45
+      ],
+      "onnx_output": [
+        1,
+        12
+      ]
+    },
+    "walk": {
+      "training": {
+        "iterations": 2,
+        "transitions": 1536,
+        "max_policy_parameter_change": 0.004403792321681976,
+        "onnx_max_abs_error": 8.940696716308594e-8,
+        "elapsed_s": 5.6162968054413795,
+        "convergence_claim": false
+      },
+      "replay": {
+        "backend": "native-mujoco-cpu",
+        "task": "walk",
+        "seed": 42,
+        "render_backend": "osmesa",
+        "duration_s": 3,
+        "steps": 150,
+        "first_fall_s": null,
+        "mean_xy_velocity_error_m_s": 0.20553629745019725,
+        "minimum_body_height_m": 0.21246116438246143,
+        "maximum_torque_nm": 1.2921543431109441,
+        "spec_sha256": "f6058f822e56d759c17377d201cf6521dc5e6531279b648636be93a18406882c",
+        "convergence_claim": false
+      },
+      "specification_mismatch_rejected": true,
+      "ort_thread_comparison_samples": 16,
+      "ort_thread_max_abs_error": 0,
+      "checkpoint_keys": [
+        "actor_state_dict",
+        "critic_state_dict",
+        "infos",
+        "iter",
+        "optimizer_state_dict"
+      ],
+      "artifacts": {
+        "checkpoint.pt": {
+          "bytes": 577141,
+          "sha256": "c743eab3fa8d1daec0da990d7bf3988eb62e50d047f95dfa56e57429a2ee2cb1"
+        },
+        "policy.onnx": {
+          "bytes": 97268,
+          "sha256": "7561f19e9e70ef211e37e6f3c38007e8844c95e9860f1e77ed155cf5fc154a03"
+        }
+      },
+      "onnx_input": [
+        1,
+        45
+      ],
+      "onnx_output": [
+        1,
+        12
+      ]
+    }
+  }
+}

@@ -12,8 +12,9 @@ def mjcf(spec: RobotSpec, *, scene=True):
     g = spec.geometry
     root = ET.Element("mujoco", model=spec.name)
     ET.SubElement(root, "compiler", angle="radian", autolimits="true")
-    ET.SubElement(root, "option", timestep=str(spec.physics_dt_s), integrator="implicitfast",
-                  solver="Newton", iterations="10", ls_iterations="20", cone="pyramidal")
+    if scene:
+        ET.SubElement(root, "option", timestep=str(spec.physics_dt_s), integrator="implicitfast",
+                      solver="Newton", iterations="10", ls_iterations="20", cone="pyramidal")
     default = ET.SubElement(root, "default")
     ET.SubElement(default, "joint", damping="0.02")
     ET.SubElement(default, "geom", friction=f"{spec.floor_friction} 0.005 0.0001",

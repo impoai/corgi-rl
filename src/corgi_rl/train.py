@@ -38,6 +38,7 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
     cfg.algorithm.num_learning_epochs = 2
     cfg.algorithm.num_mini_batches = 4
     cfg.algorithm.learning_rate = 3e-4
+    cfg.algorithm.schedule = "fixed"
     cfg.save_interval = max(1, min(100, iterations))
     env = ManagerBasedRlEnv(make_env_cfg(spec, task, num_envs, seed), device="cuda:0")
     wrapped = RslRlVecEnvWrapper(env, clip_actions=1.)
@@ -90,6 +91,8 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
 
     runner.alg.update = update_with_event
     try:
+        emit({"type": "start", "status": "training", "step": 0,
+              "iteration_unit": "one rollout followed by 2 epochs and 4 minibatches"})
         runner.learn(iterations, init_at_random_ep_len=False)
         checkpoint = out / "checkpoint.pt"
         runner.save(str(checkpoint))
@@ -99,7 +102,10 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
             raise AssertionError("PPO did not make a finite, nonzero policy update")
         runner.export_policy_to_onnx(str(out), filename="policy.onnx")
         import onnxruntime as ort
+        options = ort.SessionOptions()
+        options.intra_op_num_threads = options.inter_op_num_threads = 1
         session = ort.InferenceSession(str(out / "policy.onnx"),
+                                       sess_options=options,
                                        providers=["CPUExecutionProvider"])
         policy = runner.get_inference_policy(device="cuda:0")
         obs = wrapped.get_observations()

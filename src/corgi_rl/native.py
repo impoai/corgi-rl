@@ -1,6 +1,7 @@
 """Native MuJoCo replay of the exported policy contract (run remotely)."""
 
 from pathlib import Path
+import os
 import numpy as np
 import mujoco
 
@@ -61,7 +62,10 @@ def evaluate(spec, *, policy=None, task="stand", seconds=5., seed=42, video=None
         manifest = json.loads(Path(policy).with_name("manifest.json").read_text())
         if manifest["spec_sha256"] != spec.digest:
             raise ValueError("Policy specification hash differs; recalibrate/retrain explicitly")
-        session = ort.InferenceSession(str(policy), providers=["CPUExecutionProvider"])
+        options = ort.SessionOptions()
+        options.intra_op_num_threads = options.inter_op_num_threads = 1
+        session = ort.InferenceSession(str(policy), sess_options=options,
+                                       providers=["CPUExecutionProvider"])
         input_name = session.get_inputs()[0].name
         if session.get_inputs()[0].shape != [1, 45] or session.get_outputs()[0].shape != [1, 12]:
             raise ValueError("Expected ONNX [1,45] -> [1,12]")
@@ -104,6 +108,7 @@ def evaluate(spec, *, policy=None, task="stand", seconds=5., seed=42, video=None
             renderer.close()
     result = {
         "backend": "native-mujoco-cpu", "task": task, "seed": seed,
+        "render_backend": os.environ.get("MUJOCO_GL", "glfw") if video else None,
         "policy": str(policy) if policy else "fixed-home-PD (not trained)",
         "duration_s": seconds, "steps": len(errors), "first_fall_s": fell_at,
         "mean_xy_velocity_error_m_s": float(np.mean(errors)),

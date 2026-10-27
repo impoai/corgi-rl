@@ -15,6 +15,7 @@ from mjlab.scene import SceneCfg
 from mjlab.sim import MujocoCfg, SimulationCfg
 from mjlab.tasks.velocity.mdp import UniformVelocityCommandCfg
 from mjlab.terrains import TerrainEntityCfg
+from mjlab.utils.spec_config import CollisionCfg
 
 from .model import mjcf
 from .spec import RobotSpec
@@ -75,7 +76,7 @@ def make_env_cfg(spec: RobotSpec, task="stand", num_envs=32, seed=42):
             joint_pos={j.name: j.home_rad for j in spec.joints},
         ),
         articulation=EntityArticulationInfoCfg(
-            actuators=(XmlActuatorCfg(target_names_expr=(".*",)),),
+            actuators=(XmlActuatorCfg(target_names_expr=tuple(j.name for j in spec.joints)),),
         ),
     )
     observations = ObservationGroupCfg(
@@ -87,7 +88,11 @@ def make_env_cfg(spec: RobotSpec, task="stand", num_envs=32, seed=42):
     return ManagerBasedRlEnvCfg(
         seed=seed,
         scene=SceneCfg(entities={"robot": robot}, num_envs=num_envs, extent=2,
-                       terrain=TerrainEntityCfg(terrain_type="plane")),
+                       terrain=TerrainEntityCfg(terrain_type="plane", collisions=(CollisionCfg(
+                           geom_names_expr=(".*",),
+                           contype=1, conaffinity=1, priority=0,
+                           friction=(spec.floor_friction, .005, .0001), condim=3,
+                       ),))),
         sim=SimulationCfg(nconmax=64, njmax=256,
                           mujoco=MujocoCfg(timestep=spec.physics_dt_s,
                                            iterations=10, ls_iterations=20,

@@ -3,6 +3,10 @@
 Target: a future Linux ARM64 Rockchip RK3576 board. No board driver or motor
 bus is implemented. This directory is a specification and staged plan.
 
+The planned IMPO device adapter passes bounded motion goals to this local
+runtime and returns device events. See the [IMPO integration design](../docs/impo-integration.md).
+The network-facing adapter does not drive the 50 Hz joint-control loop.
+
 Each training run produces `policy.onnx`, `manifest.json`, `robot-spec.json`
 and a resumable PPO checkpoint. The ONNX graph includes observation
 normalization. The actor accepts float32 `[1,45]` and emits `[1,12]`.
