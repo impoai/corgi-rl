@@ -2,13 +2,9 @@ Corgi RL
 Copyright 2026 Corgi RL contributors.
 Licensed under Apache-2.0; see LICENSE.
 
-The robot's primitive geometry and project source were authored for this project.
-No Jumper or Microduck source, meshes, CAD or policy weights are bundled.
-
-Architecture references (not vendored):
-  KingKongRobotics/jumper: software/simulation/deployment separation.
-  pollen-robotics/microduck and microduck_rl: shared policy contracts and
-  actuator calibration as a first-class sim-to-real concern.
+The primitive robot geometry and project source were authored for this project.
+The README concept image was generated with the Google Gemini API; its prompt
+and generation details are recorded in docs/concept-render.md.
 
 Runtime dependencies are separate distributions under their own licenses.
 In particular, mjlab, MuJoCo and MuJoCo Warp use Apache-2.0; rsl_rl uses

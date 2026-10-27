@@ -1,5 +1,6 @@
 # Corgi RL
 
+- Keep all repository documentation, comments, diagrams, captions and user-facing text in English.
 - Python environments, dependency installation, simulation, training and tests run on the remote NVIDIA machine. Do not install or run the Python project on the owner's Mac.
 - Keep private access instructions, credentials, hostnames and IP addresses out of this public repository.
 - Use the shared specification in `src/corgi_rl/specs/corgi.json`. Generate MJCF from it; do not hand-edit generated models.
