@@ -1,0 +1,14 @@
+{
+  "parent_saved_iteration_index": 1199,
+  "resumed_saved_iteration_index": 1799,
+  "parent_adam_steps": [
+    9600
+  ],
+  "resumed_adam_steps": [
+    14400
+  ],
+  "new_ppo_iterations": 600,
+  "total_ppo_iterations": 1800,
+  "optimizer_continuation_verified": true,
+  "exact_rng_environment_continuation": false
+}

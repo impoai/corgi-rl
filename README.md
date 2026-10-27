@@ -12,10 +12,11 @@ RK3576 board.
 *The image above is a Gemini-generated concept render of the proposed appearance.
 It is not a photograph, a validated mechanical design, or the current simulator model.*
 
-**Status: the bounded GPU smoke pipeline passed on October 27, 2026.**
-Stand and walk each completed two PPO iterations, ONNX export, and a three-second
-replay. This does not establish a learned gait, convergence, or hardware readiness.
-Initial dimensions, masses, and actuator parameters remain estimates.
+**Status: a learned flat-ground policy passes forward, left/right turn and stop tests.**
+The released policy passed ten held-out reset seeds, each with a continuous
+30-second command sequence and no falls. Training and validation ran on remote
+NVIDIA infrastructure. Initial physical parameters remain estimates; this is
+simulation evidence, not hardware readiness or a general convergence claim.
 
 ## Local motion policy + IMPO
 
@@ -28,7 +29,7 @@ IMPO sends bounded motion goals; the local controller converts them into policy
 inputs and joint targets at 50 Hz. Device status returns to IMPO. Local control,
 command expiry and safe stopping must remain independent of network availability.
 
-The simulation, PPO and ONNX path is smoke-tested. **RK3576 deployment and IMPO
+The simulation, PPO and ONNX path has passed locomotion tests. **RK3576 deployment and IMPO
 integration are planned, not implemented.** See the
 [integration design](docs/impo-integration.md) and the existing
 [IMPO Gadget SDK](https://github.com/impoai/impo-gadget-sdk).
@@ -61,7 +62,8 @@ The proposed shell and corgi-like appearance are a separate design step.
 | `src/corgi_rl/model.py`, `models/` | MJCF generator and generated model |
 | `src/corgi_rl/tasks.py` | Standing and velocity-tracking tasks |
 | `src/corgi_rl/train.py` | PPO, checkpoints, ONNX export, and export error checks |
-| `src/corgi_rl/native.py` | Native MuJoCo replay, metrics, and H.264 video |
+| `src/corgi_rl/native.py`, `benchmark.py` | Native MuJoCo replay, fixed locomotion gate and H.264 video |
+| `src/corgi_rl/export.py`, `policies/` | Checkpoint export and a tested portable policy |
 | `tests/` | Specification, model, fixed-PD standing, GPU resets and physics contracts |
 | `hardware/` | Calibration plan and supplier data requirements |
 | `deploy/` | RK3576 interface, remote smoke test, and Slurm template |
@@ -70,32 +72,45 @@ The proposed shell and corgi-like appearance are a separate design step.
 | `docs/concept-render.md` | Concept image provenance and generation prompt |
 | `uv.lock` | Complete dependency lock |
 
-## Verified so far
+## Flat-ground walking
 
-The run used one NVIDIA H200, MuJoCo Warp for simulation, and PPO on CUDA.
-All six tests passed in 16.30 seconds. They check native model/calibration,
-fixed-PD standing, seeded replay, and GPU stepping, reset, fall termination,
-initial observations, physics settings, actuator gains/limits and ground friction.
+The released seed-42 policy used 1,200 PPO updates with 1,024 environments and
+24 rollout steps: 29,491,200 transitions. It passed development seeds 7, 11 and
+23 before final testing on seeds 101 through 110. The fixed 30-second sequence
+is settle, forward, left turn, forward, right turn, stop. No command-triggered
+controller switching or scripted joint trajectory is used: the ONNX actor
+produces every action throughout the episode.
 
-| Check | Stand | Walk |
-|---|---:|---:|
-| PPO iterations | 2 | 2 |
-| Simulated transitions | 1,536 | 1,536 |
-| Maximum policy parameter change | 0.004280 | 0.004404 |
-| ONNX/PyTorch maximum absolute error | 1.01e-7 | 8.94e-8 |
-| Replay duration | 3 seconds | 3 seconds |
-| Fall during this replay | None | None |
-| Mean XY velocity error | 0.00862 m/s | 0.20554 m/s |
+| Released policy: ten final episodes | Measured result |
+|---|---:|
+| Full protocol passed | 10 / 10 |
+| Falls across 300 seconds | 0 |
+| Mean straight speed, target 0.20 m/s | 0.187–0.207 m/s |
+| Worst segment mean XY velocity error | 0.0403 m/s |
+| Worst segment mean yaw-rate error | 0.0836 rad/s |
+| Worst stopped RMS speed | 0.0279 m/s |
+| Stopped displacement over final four seconds | 3.5–5.7 cm |
 
-The walk replay commands 0.2 m/s forward speed. Its error remains about the
-command magnitude: **the smoke policy has not learned useful walking**.
-Each task has a saved checkpoint, ONNX graph, calibration manifest and H.264 video.
-The native CPU simulator and OSMesa renderer ran on the remote compute node.
-EGL was unavailable on that node; CUDA training was verified separately.
+Stopping meets the stated threshold but is not perfectly motionless. The robot
+still has small residual movement. These tests cover estimated physics and flat
+ground, without pushes, obstacles or hardware randomization.
 
-[Stand replay](docs/assets/smoke-stand.mp4) ·
-[Walk replay](docs/assets/smoke-walk.mp4) ·
-[Detailed validation](docs/status.md)
+Independent training seeds 43 and 44 also passed all ten final reset seeds:
+**30/30 final episodes, 900 seconds, no falls across three policies**. Seed 43
+used 1,200 updates. Seed 44 failed the development stop-rotation gate at 1,200
+updates and needed 600 additional updates before final testing. The rewards,
+PPO settings and acceptance thresholds were unchanged. See the
+[full results and failed qualification](docs/status.md).
+
+[Watch the complete 30-second replay](docs/assets/walking-train42.mp4) ·
+[Download the policy and checkpoint](policies/flat-ground-v1/) ·
+[Test protocol](docs/walking-validation.md) · [Detailed validation](docs/status.md)
+
+![Flat-ground replay](docs/assets/walking-poster.png)
+
+Training uses MuJoCo Warp and PPO on CUDA. Evaluation runs the exported ONNX
+actor in native MuJoCo; video uses OSMesa CPU rendering on the remote compute
+node. The earlier two-update smoke results remain in the validation history.
 
 ## Stack
 
@@ -135,12 +150,18 @@ uv run --locked corgi train --task walk --output runs/walk-smoke \
 # Replay the exported policy and save metrics with an H.264 video.
 uv run --locked corgi evaluate --task walk \
   --policy runs/walk-smoke/policy.onnx --seconds 5 --video runs/walk-smoke.mp4
+
+# Replay the trained policy through the complete command-sequence test.
+uv run --locked corgi benchmark --policy policies/flat-ground-v1/policy.onnx \
+  --output runs/flat-ground-test --seeds 101 102 103 104 105 106 107 108 109 110 \
+  --video-seed 101
 ```
 
 Use a new output directory for each training run. To resume, pass
 `--resume runs/stand-smoke/checkpoint.pt --output runs/stand-resume`.
-The iteration count specifies additional iterations. Resume remains untested;
-exact reproduction of random-number and environment state is not guaranteed.
+The iteration count specifies additional iterations. Checkpoint and optimizer
+continuation was tested on training seed 44; exact reproduction of random-number
+and physical environment state is not supported.
 
 If the container has no Git executable, set `GIT_PYTHON_REFRESH=quiet` before
 importing the training stack. The Slurm smoke script sets it. Record the source

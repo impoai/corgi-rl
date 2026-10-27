@@ -63,3 +63,30 @@ The script runs the native and GPU tests, fixed-PD video, stand/walk PPO, ONNX
 export parity checks, and native replay videos. A failed command stops the job.
 The script preserves its own scratch directory after failure for diagnosis.
 Review `docs/status.md` for measured results and remaining checks.
+
+## Locomotion training and evaluation
+
+Write training outputs and standard output to compute-node local storage. Copy
+changed logs and checkpoints to shared storage in a separate process, then make
+a final copy before releasing the allocation. In the first locomotion attempt,
+synchronous shared-storage logging took several seconds per update while the
+actual rollout and PPO work took less than one second. Local output removed
+that bottleneck. Check the tools available on the compute node itself; the login
+node can have a different tool set.
+
+```bash
+# Inside the allocated CUDA container, with the locked environment activated:
+corgi train --task walk --output /var/tmp/corgi-run/walk \
+  --iterations 1200 --num-envs 1024 --steps 24 --seed 42
+
+# Export an intermediate or final checkpoint without constructing a GPU scene.
+corgi export --checkpoint /var/tmp/corgi-run/walk/checkpoint.pt \
+  --output /var/tmp/corgi-run/export
+corgi benchmark --policy /var/tmp/corgi-run/export/policy.onnx \
+  --output /var/tmp/corgi-run/development --seeds 7 11 23
+```
+
+Use a new output directory for every export and evaluation. Keep training seed,
+evaluation seeds, source revision, specification hash and policy checksum with
+the results. The [walking protocol](walking-validation.md) defines the final
+test and its fixed acceptance thresholds.

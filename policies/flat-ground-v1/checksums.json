@@ -1,0 +1,6 @@
+{
+  "checkpoint.pt": "9bf89c8c00f70c092e14215c56a9aa8b123d762b09d947a60762f96d8d4eaa74",
+  "policy.onnx": "1050b79de062b83104d1796ceeb73bfa1a992adf97b3bf034ff0b1c69c7ead82",
+  "robot-spec.json": "0cbab2e1c48ee1b97e2ffd0bb5a548226d69fe5fa75ef0a3865edbf562e73ec1",
+  "manifest.json": "8c6f59d16d802fdac2baa0018b8a94842d3610fd672b5babecbc28da7a93695a"
+}

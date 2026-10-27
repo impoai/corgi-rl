@@ -1,0 +1,3619 @@
+{
+  "date": "2026-10-27",
+  "selected_training_seed": 42,
+  "selection": "Final checkpoint passed development seeds 7,11,23 before any final test. Seeds 43 and 44 use independent initializations and identical PPO/reward settings. Seed 44 failed the development stop-rotation gate at 1200 updates and resumed for 600 more updates before final testing.",
+  "training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "qualification_at_1200_updates": {
+    "passed_training_seeds": [
+      42,
+      43
+    ],
+    "failed_training_seed": 44,
+    "failed_check": "stop_rotation",
+    "development_seeds": [
+      7,
+      11,
+      23
+    ],
+    "continued_training_experiment": "corgi-rl-walk-20261027-19854"
+  },
+  "final_evaluation_seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "pass_count": 30,
+  "episode_count": 30,
+  "fall_count": 0,
+  "total_evaluation_seconds": 900,
+  "tests": {
+    "passed": 7,
+    "elapsed_s": 15.89
+  },
+  "runs": [
+    {
+      "training_seed": 42,
+      "experiment_id": "corgi-rl-walk-20261027-19849",
+      "iterations": 1200,
+      "transitions": 29491200,
+      "policy_sha256": "1050b79de062b83104d1796ceeb73bfa1a992adf97b3bf034ff0b1c69c7ead82",
+      "pass_count": 10,
+      "fall_count": 0,
+      "evaluation_seeds": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "duration_s": 300,
+      "worst_segment_mean_xy_error_m_s": 0.04026909704557447,
+      "worst_segment_mean_yaw_error_rad_s": 0.0835829077132531,
+      "worst_stop_rms_speed_m_s": 0.027884449386480107,
+      "worst_stop_rms_yaw_rate_rad_s": 0.08468472728390988,
+      "worst_stop_drift_m": 0.057251770943790886,
+      "protocol": "flat-ground-v1",
+      "thresholds": {
+        "maximum_xy_error_m_s": 0.08,
+        "maximum_yaw_error_rad_s": 0.15,
+        "minimum_forward_speed_m_s": 0.14,
+        "minimum_signed_turn_rate_rad_s": 0.25,
+        "maximum_stop_rms_speed_m_s": 0.04,
+        "maximum_stop_rms_yaw_rad_s": 0.1,
+        "maximum_stop_drift_m": 0.12
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.00021656776066980937,
+              "mean_yaw_rate_rad_s": -0.01932811954462756,
+              "mean_xy_error_m_s": 0.020434618786028466,
+              "mean_yaw_error_rad_s": 0.06838584851743593,
+              "rms_xy_speed_m_s": 0.02439187429854982,
+              "rms_yaw_rate_rad_s": 0.08607109201791045,
+              "drift_m": 0.019039966009592676
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19478153751991062,
+              "mean_yaw_rate_rad_s": 0.0051115834378853125,
+              "mean_xy_error_m_s": 0.03374097688588528,
+              "mean_yaw_error_rad_s": 0.08019634238071481,
+              "rms_xy_speed_m_s": 0.19816998919862672,
+              "rms_yaw_rate_rad_s": 0.0932703957841431,
+              "drift_m": 0.9756387877138963
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14738694532395805,
+              "mean_yaw_rate_rad_s": 0.39183194030389723,
+              "mean_xy_error_m_s": 0.02531090119384573,
+              "mean_yaw_error_rad_s": 0.0611282821359562,
+              "rms_xy_speed_m_s": 0.1501423917032545,
+              "rms_yaw_rate_rad_s": 0.398955901400726,
+              "drift_m": 0.6543933097665826
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.1883320526814664,
+              "mean_yaw_rate_rad_s": -0.009515799818720172,
+              "mean_xy_error_m_s": 0.024772609531182033,
+              "mean_yaw_error_rad_s": 0.04396717857108975,
+              "rms_xy_speed_m_s": 0.19008241324744143,
+              "rms_yaw_rate_rad_s": 0.053567689862312425,
+              "drift_m": 0.3736619885068836
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.16323207365333667,
+              "mean_yaw_rate_rad_s": -0.3853345008034799,
+              "mean_xy_error_m_s": 0.03528644531501337,
+              "mean_yaw_error_rad_s": 0.07304441771344658,
+              "rms_xy_speed_m_s": 0.1676415787492282,
+              "rms_yaw_rate_rad_s": 0.3963772160703354,
+              "drift_m": 0.7053644756799191
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.010693278076626083,
+              "mean_yaw_rate_rad_s": -0.0002511699285337028,
+              "mean_xy_error_m_s": 0.02135808025665642,
+              "mean_yaw_error_rad_s": 0.06606689933599101,
+              "rms_xy_speed_m_s": 0.024835505525729096,
+              "rms_yaw_rate_rad_s": 0.08286994924318378,
+              "drift_m": 0.034888579953974215
+            }
+          ],
+          "minimum_body_height_m": 0.2022374215088121,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 102,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.005476822747780819,
+              "mean_yaw_rate_rad_s": -0.014246631863549969,
+              "mean_xy_error_m_s": 0.020284044158502094,
+              "mean_yaw_error_rad_s": 0.06825270993039446,
+              "rms_xy_speed_m_s": 0.02404705044554175,
+              "rms_yaw_rate_rad_s": 0.0856471046028089,
+              "drift_m": 0.0211817974200534
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18925196579010314,
+              "mean_yaw_rate_rad_s": 0.000010862115763736857,
+              "mean_xy_error_m_s": 0.029006250653566594,
+              "mean_yaw_error_rad_s": 0.07773935321509842,
+              "rms_xy_speed_m_s": 0.19162244459637714,
+              "rms_yaw_rate_rad_s": 0.08908627959517858,
+              "drift_m": 0.9450201597906772
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.1559283419628858,
+              "mean_yaw_rate_rad_s": 0.39344035039110625,
+              "mean_xy_error_m_s": 0.024431198949548382,
+              "mean_yaw_error_rad_s": 0.06349178556813664,
+              "rms_xy_speed_m_s": 0.15820822753437272,
+              "rms_yaw_rate_rad_s": 0.4009199443352814,
+              "drift_m": 0.6760700529375379
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.20717891527253052,
+              "mean_yaw_rate_rad_s": -0.010148735632367187,
+              "mean_xy_error_m_s": 0.0231488998877724,
+              "mean_yaw_error_rad_s": 0.04434879881471595,
+              "rms_xy_speed_m_s": 0.20863728269945414,
+              "rms_yaw_rate_rad_s": 0.055321236579956724,
+              "drift_m": 0.4099216871903181
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.16077427504721958,
+              "mean_yaw_rate_rad_s": -0.3817493841949512,
+              "mean_xy_error_m_s": 0.035892247406407306,
+              "mean_yaw_error_rad_s": 0.07262015655703163,
+              "rms_xy_speed_m_s": 0.16542666751397114,
+              "rms_yaw_rate_rad_s": 0.39272603463161615,
+              "drift_m": 0.6902719389890004
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.011339702282221887,
+              "mean_yaw_rate_rad_s": -0.005430223951992063,
+              "mean_xy_error_m_s": 0.022285654059647796,
+              "mean_yaw_error_rad_s": 0.06080859256478816,
+              "rms_xy_speed_m_s": 0.025077830734019937,
+              "rms_yaw_rate_rad_s": 0.0752524630105074,
+              "drift_m": 0.046391126712325724
+            }
+          ],
+          "minimum_body_height_m": 0.20412872878245827,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 103,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.002772625957395698,
+              "mean_yaw_rate_rad_s": -0.018767948674566798,
+              "mean_xy_error_m_s": 0.0221422145027575,
+              "mean_yaw_error_rad_s": 0.07124875375682044,
+              "rms_xy_speed_m_s": 0.02648423681339229,
+              "rms_yaw_rate_rad_s": 0.08846955306793124,
+              "drift_m": 0.03017198127422919
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18683734600881774,
+              "mean_yaw_rate_rad_s": 0.005586235458345218,
+              "mean_xy_error_m_s": 0.029237728744218656,
+              "mean_yaw_error_rad_s": 0.08201856373328893,
+              "rms_xy_speed_m_s": 0.1890851250041142,
+              "rms_yaw_rate_rad_s": 0.09530124257684436,
+              "drift_m": 0.9289794526893539
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15052086662624906,
+              "mean_yaw_rate_rad_s": 0.3897676505994891,
+              "mean_xy_error_m_s": 0.022065385935664487,
+              "mean_yaw_error_rad_s": 0.05850621046733407,
+              "rms_xy_speed_m_s": 0.15268395682288177,
+              "rms_yaw_rate_rad_s": 0.3962825473644223,
+              "drift_m": 0.6632273738308114
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19246815762127897,
+              "mean_yaw_rate_rad_s": -0.005405633550130422,
+              "mean_xy_error_m_s": 0.025466589600508897,
+              "mean_yaw_error_rad_s": 0.04424529898569478,
+              "rms_xy_speed_m_s": 0.19432899934389744,
+              "rms_yaw_rate_rad_s": 0.05380143783251464,
+              "drift_m": 0.3805578026648898
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.16012622032226387,
+              "mean_yaw_rate_rad_s": -0.37238435524730723,
+              "mean_xy_error_m_s": 0.03422698799321652,
+              "mean_yaw_error_rad_s": 0.08160200613761243,
+              "rms_xy_speed_m_s": 0.16453300957640807,
+              "rms_yaw_rate_rad_s": 0.3869302734894943,
+              "drift_m": 0.6960570669101116
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.014744298929028224,
+              "mean_yaw_rate_rad_s": -0.005650570099813052,
+              "mean_xy_error_m_s": 0.023752385268562,
+              "mean_yaw_error_rad_s": 0.06207247523807801,
+              "rms_xy_speed_m_s": 0.026723174071840522,
+              "rms_yaw_rate_rad_s": 0.0772605615980833,
+              "drift_m": 0.057251770943790886
+            }
+          ],
+          "minimum_body_height_m": 0.20205484556343087,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 104,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.0016643101365665298,
+              "mean_yaw_rate_rad_s": -0.008915932372935803,
+              "mean_xy_error_m_s": 0.020769750641596967,
+              "mean_yaw_error_rad_s": 0.07152347330151972,
+              "rms_xy_speed_m_s": 0.023855950867668688,
+              "rms_yaw_rate_rad_s": 0.08719169774456571,
+              "drift_m": 0.01323942521513084
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18957404446888199,
+              "mean_yaw_rate_rad_s": 0.00034933463288391777,
+              "mean_xy_error_m_s": 0.029941680560466873,
+              "mean_yaw_error_rad_s": 0.07801009468375474,
+              "rms_xy_speed_m_s": 0.1921634979276208,
+              "rms_yaw_rate_rad_s": 0.08830341147465065,
+              "drift_m": 0.9475091749876074
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15016238019241518,
+              "mean_yaw_rate_rad_s": 0.39068761824740555,
+              "mean_xy_error_m_s": 0.024809593992569233,
+              "mean_yaw_error_rad_s": 0.06161298280386727,
+              "rms_xy_speed_m_s": 0.15285934422843314,
+              "rms_yaw_rate_rad_s": 0.3976516642616471,
+              "drift_m": 0.6550511815671919
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19631915749954915,
+              "mean_yaw_rate_rad_s": -0.005542422663348054,
+              "mean_xy_error_m_s": 0.021104785111074328,
+              "mean_yaw_error_rad_s": 0.04340707789051646,
+              "rms_xy_speed_m_s": 0.1976617678951648,
+              "rms_yaw_rate_rad_s": 0.054486990491541126,
+              "drift_m": 0.38916937105153676
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15484556321778023,
+              "mean_yaw_rate_rad_s": -0.38095702441614865,
+              "mean_xy_error_m_s": 0.03091141050238991,
+              "mean_yaw_error_rad_s": 0.07379853965952898,
+              "rms_xy_speed_m_s": 0.1586541337080385,
+              "rms_yaw_rate_rad_s": 0.39237224495092,
+              "drift_m": 0.6523378449835668
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.010131673778752561,
+              "mean_yaw_rate_rad_s": -0.0021658770012916275,
+              "mean_xy_error_m_s": 0.02242092476896597,
+              "mean_yaw_error_rad_s": 0.06514860087968381,
+              "rms_xy_speed_m_s": 0.025625394481661647,
+              "rms_yaw_rate_rad_s": 0.08082528033756158,
+              "drift_m": 0.053033794921232835
+            }
+          ],
+          "minimum_body_height_m": 0.20288768228785764,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 105,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.007798141291988164,
+              "mean_yaw_rate_rad_s": -0.00883730179101941,
+              "mean_xy_error_m_s": 0.025356897290656013,
+              "mean_yaw_error_rad_s": 0.06758299886270741,
+              "rms_xy_speed_m_s": 0.030381108341903117,
+              "rms_yaw_rate_rad_s": 0.08450894665984723,
+              "drift_m": 0.04664015648476498
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19034085220880248,
+              "mean_yaw_rate_rad_s": 0.0008351002115323836,
+              "mean_xy_error_m_s": 0.029071316685175062,
+              "mean_yaw_error_rad_s": 0.0817333504121633,
+              "rms_xy_speed_m_s": 0.19269162383416796,
+              "rms_yaw_rate_rad_s": 0.09371678835654901,
+              "drift_m": 0.9498566936854661
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15011823663039434,
+              "mean_yaw_rate_rad_s": 0.39091385939967527,
+              "mean_xy_error_m_s": 0.02272510194743169,
+              "mean_yaw_error_rad_s": 0.06314538284289385,
+              "rms_xy_speed_m_s": 0.15236283857975294,
+              "rms_yaw_rate_rad_s": 0.39853540167692153,
+              "drift_m": 0.6621391964540182
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.1946458882901594,
+              "mean_yaw_rate_rad_s": -0.010063037518694449,
+              "mean_xy_error_m_s": 0.022944697050934687,
+              "mean_yaw_error_rad_s": 0.048283031009204586,
+              "rms_xy_speed_m_s": 0.19629288535472045,
+              "rms_yaw_rate_rad_s": 0.05829183158869549,
+              "drift_m": 0.3854239600995282
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.159272684517169,
+              "mean_yaw_rate_rad_s": -0.3815503551296515,
+              "mean_xy_error_m_s": 0.032588416964837406,
+              "mean_yaw_error_rad_s": 0.07296448188757454,
+              "rms_xy_speed_m_s": 0.16336870794004038,
+              "rms_yaw_rate_rad_s": 0.39299775640214385,
+              "drift_m": 0.6665592331216702
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.011095831317676396,
+              "mean_yaw_rate_rad_s": -0.00023920948719142825,
+              "mean_xy_error_m_s": 0.02203615995605203,
+              "mean_yaw_error_rad_s": 0.06677230082818085,
+              "rms_xy_speed_m_s": 0.02510087779381095,
+              "rms_yaw_rate_rad_s": 0.08317650938936504,
+              "drift_m": 0.03566930332168692
+            }
+          ],
+          "minimum_body_height_m": 0.20132937768154263,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 106,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0017899081414505574,
+              "mean_yaw_rate_rad_s": -0.01402062913489535,
+              "mean_xy_error_m_s": 0.020045447640676204,
+              "mean_yaw_error_rad_s": 0.06522155323384025,
+              "rms_xy_speed_m_s": 0.022721299323457983,
+              "rms_yaw_rate_rad_s": 0.08205366275061725,
+              "drift_m": 0.009056788647113557
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19177064489588758,
+              "mean_yaw_rate_rad_s": -0.0017777716186843013,
+              "mean_xy_error_m_s": 0.026870900556756488,
+              "mean_yaw_error_rad_s": 0.07488908813934043,
+              "rms_xy_speed_m_s": 0.19386149477646597,
+              "rms_yaw_rate_rad_s": 0.08624312851139417,
+              "drift_m": 0.9560419768611835
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.157443295069431,
+              "mean_yaw_rate_rad_s": 0.39188046276335253,
+              "mean_xy_error_m_s": 0.025627751043693615,
+              "mean_yaw_error_rad_s": 0.05757508643741723,
+              "rms_xy_speed_m_s": 0.1598746676820938,
+              "rms_yaw_rate_rad_s": 0.3983939408647233,
+              "drift_m": 0.6956556093609939
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2036182273671085,
+              "mean_yaw_rate_rad_s": -0.010371869139583784,
+              "mean_xy_error_m_s": 0.023183140205957242,
+              "mean_yaw_error_rad_s": 0.044441897100851314,
+              "rms_xy_speed_m_s": 0.20522911315893194,
+              "rms_yaw_rate_rad_s": 0.0528913106537754,
+              "drift_m": 0.402321140159153
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15364064347116596,
+              "mean_yaw_rate_rad_s": -0.3790358518650417,
+              "mean_xy_error_m_s": 0.03175207158404495,
+              "mean_yaw_error_rad_s": 0.07859094401481852,
+              "rms_xy_speed_m_s": 0.1577323737681353,
+              "rms_yaw_rate_rad_s": 0.3914716205854299,
+              "drift_m": 0.6566176179381029
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.006636264915060212,
+              "mean_yaw_rate_rad_s": -0.0075902522757824884,
+              "mean_xy_error_m_s": 0.022876650840699675,
+              "mean_yaw_error_rad_s": 0.0630649910862047,
+              "rms_xy_speed_m_s": 0.026595314959344953,
+              "rms_yaw_rate_rad_s": 0.07911672271189402,
+              "drift_m": 0.05014925508936033
+            }
+          ],
+          "minimum_body_height_m": 0.20427246176474526,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 107,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.005899398160789006,
+              "mean_yaw_rate_rad_s": -0.014819047300316168,
+              "mean_xy_error_m_s": 0.02142685419484999,
+              "mean_yaw_error_rad_s": 0.06155627735244685,
+              "rms_xy_speed_m_s": 0.02400224252551898,
+              "rms_yaw_rate_rad_s": 0.07382435697631935,
+              "drift_m": 0.03150253260062911
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19753560937089246,
+              "mean_yaw_rate_rad_s": 0.0057239537305022155,
+              "mean_xy_error_m_s": 0.030877710381871436,
+              "mean_yaw_error_rad_s": 0.08001111422690592,
+              "rms_xy_speed_m_s": 0.2003783698524277,
+              "rms_yaw_rate_rad_s": 0.09258415150701706,
+              "drift_m": 0.9871109578475753
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15130264519102973,
+              "mean_yaw_rate_rad_s": 0.39217601221293286,
+              "mean_xy_error_m_s": 0.022899532145591154,
+              "mean_yaw_error_rad_s": 0.06021093804061808,
+              "rms_xy_speed_m_s": 0.1535625858404289,
+              "rms_yaw_rate_rad_s": 0.3988660196878094,
+              "drift_m": 0.6590588884105544
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19043234907747753,
+              "mean_yaw_rate_rad_s": -0.007604335704520285,
+              "mean_xy_error_m_s": 0.02290030394887804,
+              "mean_yaw_error_rad_s": 0.04740229133112752,
+              "rms_xy_speed_m_s": 0.19185191202204324,
+              "rms_yaw_rate_rad_s": 0.05823398154211758,
+              "drift_m": 0.3767117785099648
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.1606248251416079,
+              "mean_yaw_rate_rad_s": -0.3769878679045927,
+              "mean_xy_error_m_s": 0.037901036583073235,
+              "mean_yaw_error_rad_s": 0.07945817437650461,
+              "rms_xy_speed_m_s": 0.16573123456882075,
+              "rms_yaw_rate_rad_s": 0.39013333112925935,
+              "drift_m": 0.6821978354909314
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.01285368980347542,
+              "mean_yaw_rate_rad_s": 0.0016013819905823165,
+              "mean_xy_error_m_s": 0.02336653243098244,
+              "mean_yaw_error_rad_s": 0.06715377905303076,
+              "rms_xy_speed_m_s": 0.02659521048611584,
+              "rms_yaw_rate_rad_s": 0.08468472728390988,
+              "drift_m": 0.04422534920401708
+            }
+          ],
+          "minimum_body_height_m": 0.2037056460469707,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 108,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.0035230636067949883,
+              "mean_yaw_rate_rad_s": -0.01370049250765486,
+              "mean_xy_error_m_s": 0.02159852934891325,
+              "mean_yaw_error_rad_s": 0.07174030218539641,
+              "rms_xy_speed_m_s": 0.02603932824042196,
+              "rms_yaw_rate_rad_s": 0.08759615917674098,
+              "drift_m": 0.022582564557987777
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.1915997209776946,
+              "mean_yaw_rate_rad_s": 0.004179652293287217,
+              "mean_xy_error_m_s": 0.032752702200159564,
+              "mean_yaw_error_rad_s": 0.07958378245588045,
+              "rms_xy_speed_m_s": 0.1947615381377114,
+              "rms_yaw_rate_rad_s": 0.09192259449464973,
+              "drift_m": 0.958765039243708
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14726944171460923,
+              "mean_yaw_rate_rad_s": 0.3896699083036134,
+              "mean_xy_error_m_s": 0.023170907594819077,
+              "mean_yaw_error_rad_s": 0.061538241987292006,
+              "rms_xy_speed_m_s": 0.14972699832484293,
+              "rms_yaw_rate_rad_s": 0.3967084626389635,
+              "drift_m": 0.6393942917941249
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.18904085409829727,
+              "mean_yaw_rate_rad_s": -0.0052079091230708965,
+              "mean_xy_error_m_s": 0.023855512627596297,
+              "mean_yaw_error_rad_s": 0.04670269963250243,
+              "rms_xy_speed_m_s": 0.1905336793728,
+              "rms_yaw_rate_rad_s": 0.05719614674443724,
+              "drift_m": 0.37431115415550603
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15869225240769713,
+              "mean_yaw_rate_rad_s": -0.3758019083866035,
+              "mean_xy_error_m_s": 0.03180507525296246,
+              "mean_yaw_error_rad_s": 0.07980441867145546,
+              "rms_xy_speed_m_s": 0.16243321469305783,
+              "rms_yaw_rate_rad_s": 0.3895153473308358,
+              "drift_m": 0.6783487953635919
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.012850104626756606,
+              "mean_yaw_rate_rad_s": -0.0038250742598936027,
+              "mean_xy_error_m_s": 0.022784394385417527,
+              "mean_yaw_error_rad_s": 0.06771140580438374,
+              "rms_xy_speed_m_s": 0.025815824372538182,
+              "rms_yaw_rate_rad_s": 0.08357992980444151,
+              "drift_m": 0.056113678192975636
+            }
+          ],
+          "minimum_body_height_m": 0.20441582563974017,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 109,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": -0.0018382824858749977,
+              "mean_yaw_rate_rad_s": -0.01367091300577706,
+              "mean_xy_error_m_s": 0.019633620288190212,
+              "mean_yaw_error_rad_s": 0.07008323085404893,
+              "rms_xy_speed_m_s": 0.022579428670207437,
+              "rms_yaw_rate_rad_s": 0.0853515699873075,
+              "drift_m": 0.00965707373824314
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18946271175265955,
+              "mean_yaw_rate_rad_s": 0.0017370952076406175,
+              "mean_xy_error_m_s": 0.03238462012245998,
+              "mean_yaw_error_rad_s": 0.0835829077132531,
+              "rms_xy_speed_m_s": 0.19253898490097768,
+              "rms_yaw_rate_rad_s": 0.09449844341666398,
+              "drift_m": 0.9485714489774968
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15365057602512777,
+              "mean_yaw_rate_rad_s": 0.3906791855222526,
+              "mean_xy_error_m_s": 0.02329778635766661,
+              "mean_yaw_error_rad_s": 0.06046552770135585,
+              "rms_xy_speed_m_s": 0.15582891249725317,
+              "rms_yaw_rate_rad_s": 0.39758012025167505,
+              "drift_m": 0.6741838976648818
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19290248995113188,
+              "mean_yaw_rate_rad_s": -0.011376993027195295,
+              "mean_xy_error_m_s": 0.021730280696968605,
+              "mean_yaw_error_rad_s": 0.048456726908649606,
+              "rms_xy_speed_m_s": 0.194246001143209,
+              "rms_yaw_rate_rad_s": 0.059185355165686154,
+              "drift_m": 0.3818035497194588
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.16510379076390785,
+              "mean_yaw_rate_rad_s": -0.37752828405260486,
+              "mean_xy_error_m_s": 0.0351504988413392,
+              "mean_yaw_error_rad_s": 0.0755557920528912,
+              "rms_xy_speed_m_s": 0.1690907064702004,
+              "rms_yaw_rate_rad_s": 0.38979297347209385,
+              "drift_m": 0.7020755130457795
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.005098100956942282,
+              "mean_yaw_rate_rad_s": -0.000041849609191293085,
+              "mean_xy_error_m_s": 0.021928468160961792,
+              "mean_yaw_error_rad_s": 0.06796547033933908,
+              "rms_xy_speed_m_s": 0.025568831388192968,
+              "rms_yaw_rate_rad_s": 0.08373254831986002,
+              "drift_m": 0.04781682137944691
+            }
+          ],
+          "minimum_body_height_m": 0.20316511455905273,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 110,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0008997569315095011,
+              "mean_yaw_rate_rad_s": -0.008164396454800356,
+              "mean_xy_error_m_s": 0.021311074747738617,
+              "mean_yaw_error_rad_s": 0.06996629442217012,
+              "rms_xy_speed_m_s": 0.025157300972813122,
+              "rms_yaw_rate_rad_s": 0.08656799932421504,
+              "drift_m": 0.022067905991523296
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2032536713190704,
+              "mean_yaw_rate_rad_s": 0.009003668922880455,
+              "mean_xy_error_m_s": 0.035172741269823476,
+              "mean_yaw_error_rad_s": 0.08174942044591091,
+              "rms_xy_speed_m_s": 0.20684257868804004,
+              "rms_yaw_rate_rad_s": 0.0958315379384385,
+              "drift_m": 1.0198234397883639
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15422463232843284,
+              "mean_yaw_rate_rad_s": 0.39363640217247453,
+              "mean_xy_error_m_s": 0.022345674449434364,
+              "mean_yaw_error_rad_s": 0.06272258517737284,
+              "rms_xy_speed_m_s": 0.156187692288478,
+              "rms_yaw_rate_rad_s": 0.4009183003872595,
+              "drift_m": 0.6677771968421641
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.1926107393084735,
+              "mean_yaw_rate_rad_s": -0.00990937567888549,
+              "mean_xy_error_m_s": 0.022026495642930233,
+              "mean_yaw_error_rad_s": 0.04863377775340545,
+              "rms_xy_speed_m_s": 0.1940192590051034,
+              "rms_yaw_rate_rad_s": 0.059166118127646224,
+              "drift_m": 0.38220907285826805
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.17155291444561152,
+              "mean_yaw_rate_rad_s": -0.37858642191181946,
+              "mean_xy_error_m_s": 0.04026909704557447,
+              "mean_yaw_error_rad_s": 0.07702475071009625,
+              "rms_xy_speed_m_s": 0.17603826243795756,
+              "rms_yaw_rate_rad_s": 0.39179698525782186,
+              "drift_m": 0.7285504468118371
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.013968404109689875,
+              "mean_yaw_rate_rad_s": -0.0005911649982416457,
+              "mean_xy_error_m_s": 0.024472095622652776,
+              "mean_yaw_error_rad_s": 0.06807260098512477,
+              "rms_xy_speed_m_s": 0.027884449386480107,
+              "rms_yaw_rate_rad_s": 0.08331603823206549,
+              "drift_m": 0.05138746006736052
+            }
+          ],
+          "minimum_body_height_m": 0.2042686640104008,
+          "maximum_torque_nm": 2.5
+        }
+      ]
+    },
+    {
+      "training_seed": 43,
+      "experiment_id": "corgi-rl-walk-20261027-19851",
+      "iterations": 1200,
+      "transitions": 29491200,
+      "policy_sha256": "afe2af5c6d035646dfb5c7f3cfabcbe5928653a3c91abf977ad570819b0269ff",
+      "pass_count": 10,
+      "fall_count": 0,
+      "evaluation_seeds": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "duration_s": 300,
+      "worst_segment_mean_xy_error_m_s": 0.05772707537247608,
+      "worst_segment_mean_yaw_error_rad_s": 0.07448335642014545,
+      "worst_stop_rms_speed_m_s": 0.03716810587589776,
+      "worst_stop_rms_yaw_rate_rad_s": 0.0941459154726864,
+      "worst_stop_drift_m": 0.09414498090898947,
+      "protocol": "flat-ground-v1",
+      "thresholds": {
+        "maximum_xy_error_m_s": 0.08,
+        "maximum_yaw_error_rad_s": 0.15,
+        "minimum_forward_speed_m_s": 0.14,
+        "minimum_signed_turn_rate_rad_s": 0.25,
+        "maximum_stop_rms_speed_m_s": 0.04,
+        "maximum_stop_rms_yaw_rad_s": 0.1,
+        "maximum_stop_drift_m": 0.12
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014533411992492891,
+              "mean_yaw_rate_rad_s": 0.021745110536717932,
+              "mean_xy_error_m_s": 0.02733317667355295,
+              "mean_yaw_error_rad_s": 0.0632541806192921,
+              "rms_xy_speed_m_s": 0.029717782557780677,
+              "rms_yaw_rate_rad_s": 0.08271317797025246,
+              "drift_m": 0.02612996585234537
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.21013095302705279,
+              "mean_yaw_rate_rad_s": 0.024879904024284208,
+              "mean_xy_error_m_s": 0.04184827369318662,
+              "mean_yaw_error_rad_s": 0.061914846544604156,
+              "rms_xy_speed_m_s": 0.2150675426645082,
+              "rms_yaw_rate_rad_s": 0.08247070956833562,
+              "drift_m": 1.0453147621145469
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14631608188379996,
+              "mean_yaw_rate_rad_s": 0.3987725901232028,
+              "mean_xy_error_m_s": 0.03090562657049196,
+              "mean_yaw_error_rad_s": 0.05451400828471806,
+              "rms_xy_speed_m_s": 0.15010075392764585,
+              "rms_yaw_rate_rad_s": 0.40487149789393817,
+              "drift_m": 0.6138279689619629
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.1976766412569609,
+              "mean_yaw_rate_rad_s": 0.04319740516722314,
+              "mean_xy_error_m_s": 0.038320744001633655,
+              "mean_yaw_error_rad_s": 0.056115707665126816,
+              "rms_xy_speed_m_s": 0.20224639483865006,
+              "rms_yaw_rate_rad_s": 0.06862672436261545,
+              "drift_m": 0.39038278914132896
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19065009548732775,
+              "mean_yaw_rate_rad_s": -0.3753644061047514,
+              "mean_xy_error_m_s": 0.05306121927365601,
+              "mean_yaw_error_rad_s": 0.06503421570341575,
+              "rms_xy_speed_m_s": 0.19490659904492724,
+              "rms_yaw_rate_rad_s": 0.38382073665610683,
+              "drift_m": 0.8224908894856705
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.022964253502881764,
+              "mean_yaw_rate_rad_s": 0.01150012101065485,
+              "mean_xy_error_m_s": 0.03278561838163571,
+              "mean_yaw_error_rad_s": 0.07637688389356831,
+              "rms_xy_speed_m_s": 0.03575385539724334,
+              "rms_yaw_rate_rad_s": 0.0941459154726864,
+              "drift_m": 0.08719996878057788
+            }
+          ],
+          "minimum_body_height_m": 0.20804761252221873,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 102,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014715054841804787,
+              "mean_yaw_rate_rad_s": 0.017055384902972016,
+              "mean_xy_error_m_s": 0.02773503492441203,
+              "mean_yaw_error_rad_s": 0.06276781919085864,
+              "rms_xy_speed_m_s": 0.030813310808159966,
+              "rms_yaw_rate_rad_s": 0.07793340127392037,
+              "drift_m": 0.02623417163234882
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19972926817521677,
+              "mean_yaw_rate_rad_s": 0.021105579118117206,
+              "mean_xy_error_m_s": 0.045183849838381994,
+              "mean_yaw_error_rad_s": 0.06505283601103787,
+              "rms_xy_speed_m_s": 0.20580443418785527,
+              "rms_yaw_rate_rad_s": 0.08132276852687784,
+              "drift_m": 0.9971002326758719
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14442529248858085,
+              "mean_yaw_rate_rad_s": 0.4026528073643419,
+              "mean_xy_error_m_s": 0.031031673978340606,
+              "mean_yaw_error_rad_s": 0.05400016072093287,
+              "rms_xy_speed_m_s": 0.14823106807553568,
+              "rms_yaw_rate_rad_s": 0.40841161603177245,
+              "drift_m": 0.5957827068757707
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2001068093534083,
+              "mean_yaw_rate_rad_s": 0.049540109719228,
+              "mean_xy_error_m_s": 0.03613558021767434,
+              "mean_yaw_error_rad_s": 0.06281115623370352,
+              "rms_xy_speed_m_s": 0.20399591846059156,
+              "rms_yaw_rate_rad_s": 0.07462764063053356,
+              "drift_m": 0.39427740461744387
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18868668125392185,
+              "mean_yaw_rate_rad_s": -0.3683998004562888,
+              "mean_xy_error_m_s": 0.05185360452306263,
+              "mean_yaw_error_rad_s": 0.05538946301126505,
+              "rms_xy_speed_m_s": 0.1930790111950381,
+              "rms_yaw_rate_rad_s": 0.3740240799267475,
+              "drift_m": 0.7968340662153365
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.01972347788227566,
+              "mean_yaw_rate_rad_s": 0.011994827355117707,
+              "mean_xy_error_m_s": 0.03061320756411467,
+              "mean_yaw_error_rad_s": 0.07365544065440525,
+              "rms_xy_speed_m_s": 0.03356090695975734,
+              "rms_yaw_rate_rad_s": 0.09307531182435634,
+              "drift_m": 0.07142839601878534
+            }
+          ],
+          "minimum_body_height_m": 0.20877510978189784,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 103,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014442827759103822,
+              "mean_yaw_rate_rad_s": 0.014126920624575963,
+              "mean_xy_error_m_s": 0.028630919802405678,
+              "mean_yaw_error_rad_s": 0.07311633995804408,
+              "rms_xy_speed_m_s": 0.031927819065246554,
+              "rms_yaw_rate_rad_s": 0.09445128280409533,
+              "drift_m": 0.029909876245226237
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2072861810165615,
+              "mean_yaw_rate_rad_s": 0.027551937388919555,
+              "mean_xy_error_m_s": 0.04233910670887773,
+              "mean_yaw_error_rad_s": 0.06394522036976284,
+              "rms_xy_speed_m_s": 0.2124977072688783,
+              "rms_yaw_rate_rad_s": 0.08538379960636486,
+              "drift_m": 1.0330470924790263
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14846470635000508,
+              "mean_yaw_rate_rad_s": 0.4041191644864283,
+              "mean_xy_error_m_s": 0.030829849842406987,
+              "mean_yaw_error_rad_s": 0.05581728497318599,
+              "rms_xy_speed_m_s": 0.1522640801114919,
+              "rms_yaw_rate_rad_s": 0.41052510718573487,
+              "drift_m": 0.6140332308968723
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.20078132880885666,
+              "mean_yaw_rate_rad_s": 0.04655160885684867,
+              "mean_xy_error_m_s": 0.03738248627547221,
+              "mean_yaw_error_rad_s": 0.06294697776306094,
+              "rms_xy_speed_m_s": 0.20489701007559508,
+              "rms_yaw_rate_rad_s": 0.07664693681553947,
+              "drift_m": 0.39532120307880586
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.17779538029722966,
+              "mean_yaw_rate_rad_s": -0.3724591810226905,
+              "mean_xy_error_m_s": 0.05476809909476232,
+              "mean_yaw_error_rad_s": 0.06464344086395828,
+              "rms_xy_speed_m_s": 0.18603487367285132,
+              "rms_yaw_rate_rad_s": 0.37991586917731973,
+              "drift_m": 0.7506997140941758
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.025524690651707524,
+              "mean_yaw_rate_rad_s": 0.009501480586511245,
+              "mean_xy_error_m_s": 0.03452022714200743,
+              "mean_yaw_error_rad_s": 0.06899355585943245,
+              "rms_xy_speed_m_s": 0.03716810587589776,
+              "rms_yaw_rate_rad_s": 0.08637161190671766,
+              "drift_m": 0.09414498090898947
+            }
+          ],
+          "minimum_body_height_m": 0.2086377813845648,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 104,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014492946677045043,
+              "mean_yaw_rate_rad_s": 0.01580929054444769,
+              "mean_xy_error_m_s": 0.02861090547615961,
+              "mean_yaw_error_rad_s": 0.07579428144406973,
+              "rms_xy_speed_m_s": 0.03141827516153398,
+              "rms_yaw_rate_rad_s": 0.09482250158666601,
+              "drift_m": 0.029051258213276056
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19926496294950488,
+              "mean_yaw_rate_rad_s": 0.02317457053336107,
+              "mean_xy_error_m_s": 0.04246497965191942,
+              "mean_yaw_error_rad_s": 0.06656041259977905,
+              "rms_xy_speed_m_s": 0.20474027069471934,
+              "rms_yaw_rate_rad_s": 0.08579187258325448,
+              "drift_m": 0.9932869660306212
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14605980108263877,
+              "mean_yaw_rate_rad_s": 0.4066707175921573,
+              "mean_xy_error_m_s": 0.030664276763397256,
+              "mean_yaw_error_rad_s": 0.05428269685266128,
+              "rms_xy_speed_m_s": 0.1497452726359721,
+              "rms_yaw_rate_rad_s": 0.41238331416618307,
+              "drift_m": 0.6087066615926268
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2024707825972653,
+              "mean_yaw_rate_rad_s": 0.04155581463144047,
+              "mean_xy_error_m_s": 0.037510444973591996,
+              "mean_yaw_error_rad_s": 0.06504746019267156,
+              "rms_xy_speed_m_s": 0.20666483348106085,
+              "rms_yaw_rate_rad_s": 0.08015472449553841,
+              "drift_m": 0.39898255671576394
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18156976835158206,
+              "mean_yaw_rate_rad_s": -0.3712107026588915,
+              "mean_xy_error_m_s": 0.05358218816713308,
+              "mean_yaw_error_rad_s": 0.06209769714686567,
+              "rms_xy_speed_m_s": 0.18830956033248514,
+              "rms_yaw_rate_rad_s": 0.37791596611610534,
+              "drift_m": 0.7871349098697158
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.016904702673036537,
+              "mean_yaw_rate_rad_s": 0.016762261507229217,
+              "mean_xy_error_m_s": 0.02916724198771723,
+              "mean_yaw_error_rad_s": 0.07412200680693576,
+              "rms_xy_speed_m_s": 0.032543378598786005,
+              "rms_yaw_rate_rad_s": 0.09312044233822497,
+              "drift_m": 0.06346796040966621
+            }
+          ],
+          "minimum_body_height_m": 0.20831115570718636,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 105,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.01982456462205293,
+              "mean_yaw_rate_rad_s": 0.014117680419526218,
+              "mean_xy_error_m_s": 0.030775889609735277,
+              "mean_yaw_error_rad_s": 0.07513058311942038,
+              "rms_xy_speed_m_s": 0.03380542157093242,
+              "rms_yaw_rate_rad_s": 0.09275817482986473,
+              "drift_m": 0.036188897096975176
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.20329033821676176,
+              "mean_yaw_rate_rad_s": 0.029419343979624257,
+              "mean_xy_error_m_s": 0.04270278856794931,
+              "mean_yaw_error_rad_s": 0.06674163480596292,
+              "rms_xy_speed_m_s": 0.20866404181869525,
+              "rms_yaw_rate_rad_s": 0.08616031249203784,
+              "drift_m": 1.0132739690920323
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14629117851820422,
+              "mean_yaw_rate_rad_s": 0.39814472797443207,
+              "mean_xy_error_m_s": 0.032153885853858255,
+              "mean_yaw_error_rad_s": 0.054313998692632634,
+              "rms_xy_speed_m_s": 0.1504244700110436,
+              "rms_yaw_rate_rad_s": 0.4039899662473192,
+              "drift_m": 0.613118505465838
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.1899791287171334,
+              "mean_yaw_rate_rad_s": 0.03523883513056772,
+              "mean_xy_error_m_s": 0.03648729394186474,
+              "mean_yaw_error_rad_s": 0.052057473685806904,
+              "rms_xy_speed_m_s": 0.1939100539560099,
+              "rms_yaw_rate_rad_s": 0.06383179291764203,
+              "drift_m": 0.3743677725193558
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19017848958429323,
+              "mean_yaw_rate_rad_s": -0.38018357990363416,
+              "mean_xy_error_m_s": 0.05770483461691512,
+              "mean_yaw_error_rad_s": 0.07448335642014545,
+              "rms_xy_speed_m_s": 0.19620694340065062,
+              "rms_yaw_rate_rad_s": 0.3915183872768251,
+              "drift_m": 0.8138000441650809
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.019985299611270137,
+              "mean_yaw_rate_rad_s": 0.011012390403515204,
+              "mean_xy_error_m_s": 0.03220294146063288,
+              "mean_yaw_error_rad_s": 0.06941197592642101,
+              "rms_xy_speed_m_s": 0.03519839054698513,
+              "rms_yaw_rate_rad_s": 0.09084883963146417,
+              "drift_m": 0.07560390192502371
+            }
+          ],
+          "minimum_body_height_m": 0.20848741332393825,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 106,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.01852518811072555,
+              "mean_yaw_rate_rad_s": 0.01682083326088523,
+              "mean_xy_error_m_s": 0.032168315534495735,
+              "mean_yaw_error_rad_s": 0.06278660246476374,
+              "rms_xy_speed_m_s": 0.035205579988987074,
+              "rms_yaw_rate_rad_s": 0.07849027278468804,
+              "drift_m": 0.03266551830428208
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2096496787765259,
+              "mean_yaw_rate_rad_s": 0.01903229806528016,
+              "mean_xy_error_m_s": 0.039289427058382446,
+              "mean_yaw_error_rad_s": 0.05891105937175881,
+              "rms_xy_speed_m_s": 0.2140413333578059,
+              "rms_yaw_rate_rad_s": 0.07478209742722351,
+              "drift_m": 1.038992736094751
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14251245852215738,
+              "mean_yaw_rate_rad_s": 0.40315672288451454,
+              "mean_xy_error_m_s": 0.03118990606167403,
+              "mean_yaw_error_rad_s": 0.056515653830014674,
+              "rms_xy_speed_m_s": 0.1463884333121657,
+              "rms_yaw_rate_rad_s": 0.40926982461174677,
+              "drift_m": 0.5836570389248731
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19997560792065858,
+              "mean_yaw_rate_rad_s": 0.0493698854502182,
+              "mean_xy_error_m_s": 0.036954290448613515,
+              "mean_yaw_error_rad_s": 0.0641741091414925,
+              "rms_xy_speed_m_s": 0.2041318430320493,
+              "rms_yaw_rate_rad_s": 0.08152262380615649,
+              "drift_m": 0.39199456307966435
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18233338935820512,
+              "mean_yaw_rate_rad_s": -0.3717020369998623,
+              "mean_xy_error_m_s": 0.050599668689601286,
+              "mean_yaw_error_rad_s": 0.06444843665888254,
+              "rms_xy_speed_m_s": 0.18801451441533618,
+              "rms_yaw_rate_rad_s": 0.37960924753870146,
+              "drift_m": 0.7826269738043081
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.01965082833833312,
+              "mean_yaw_rate_rad_s": 0.013438020800255763,
+              "mean_xy_error_m_s": 0.03045572458350955,
+              "mean_yaw_error_rad_s": 0.07255374471360025,
+              "rms_xy_speed_m_s": 0.03320477724457802,
+              "rms_yaw_rate_rad_s": 0.09143056111035469,
+              "drift_m": 0.0725666819989112
+            }
+          ],
+          "minimum_body_height_m": 0.20829420964083104,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 107,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014584349430452342,
+              "mean_yaw_rate_rad_s": 0.018091844117044016,
+              "mean_xy_error_m_s": 0.02789597037965772,
+              "mean_yaw_error_rad_s": 0.07157770010882365,
+              "rms_xy_speed_m_s": 0.0306687331260504,
+              "rms_yaw_rate_rad_s": 0.09177766591587272,
+              "drift_m": 0.027664027305771246
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.20718465295988112,
+              "mean_yaw_rate_rad_s": 0.03274323698645356,
+              "mean_xy_error_m_s": 0.040980553088716655,
+              "mean_yaw_error_rad_s": 0.06007215819508519,
+              "rms_xy_speed_m_s": 0.2120764078621849,
+              "rms_yaw_rate_rad_s": 0.08151549753283528,
+              "drift_m": 1.0300796082214885
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14469564036851426,
+              "mean_yaw_rate_rad_s": 0.3996867560797358,
+              "mean_xy_error_m_s": 0.031863151366386754,
+              "mean_yaw_error_rad_s": 0.056771079873045936,
+              "rms_xy_speed_m_s": 0.1487410826281762,
+              "rms_yaw_rate_rad_s": 0.40607962502075123,
+              "drift_m": 0.6108410021874114
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.20852906447375258,
+              "mean_yaw_rate_rad_s": 0.0336478053865186,
+              "mean_xy_error_m_s": 0.037457969237041845,
+              "mean_yaw_error_rad_s": 0.06468627237773746,
+              "rms_xy_speed_m_s": 0.21269899559837036,
+              "rms_yaw_rate_rad_s": 0.07996533624593072,
+              "drift_m": 0.4110397844283387
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.1854766130930186,
+              "mean_yaw_rate_rad_s": -0.370698285782821,
+              "mean_xy_error_m_s": 0.052047238503234554,
+              "mean_yaw_error_rad_s": 0.05823418210155415,
+              "rms_xy_speed_m_s": 0.19091797584913053,
+              "rms_yaw_rate_rad_s": 0.3771838602589014,
+              "drift_m": 0.7877704376689431
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.014193208299232419,
+              "mean_yaw_rate_rad_s": 0.0171623824933243,
+              "mean_xy_error_m_s": 0.028555744664636472,
+              "mean_yaw_error_rad_s": 0.07099854848918973,
+              "rms_xy_speed_m_s": 0.03206949900023951,
+              "rms_yaw_rate_rad_s": 0.08981612083989877,
+              "drift_m": 0.05385264375372475
+            }
+          ],
+          "minimum_body_height_m": 0.2086604333559695,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 108,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.02182600337396825,
+              "mean_yaw_rate_rad_s": 0.014543749377176425,
+              "mean_xy_error_m_s": 0.03172428940737606,
+              "mean_yaw_error_rad_s": 0.0669039451275501,
+              "rms_xy_speed_m_s": 0.03450366059346379,
+              "rms_yaw_rate_rad_s": 0.08410321384575847,
+              "drift_m": 0.03900879978381362
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.20305313761338842,
+              "mean_yaw_rate_rad_s": 0.02957148771662333,
+              "mean_xy_error_m_s": 0.044188090724812994,
+              "mean_yaw_error_rad_s": 0.06595416791999836,
+              "rms_xy_speed_m_s": 0.20889583295161365,
+              "rms_yaw_rate_rad_s": 0.08717428798741579,
+              "drift_m": 1.0147248600459717
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.148843075934874,
+              "mean_yaw_rate_rad_s": 0.4011790294927472,
+              "mean_xy_error_m_s": 0.030015625534854352,
+              "mean_yaw_error_rad_s": 0.05478991495075905,
+              "rms_xy_speed_m_s": 0.15232477802367828,
+              "rms_yaw_rate_rad_s": 0.40721162497074,
+              "drift_m": 0.6105859092227637
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19628333504148343,
+              "mean_yaw_rate_rad_s": 0.04038039863227679,
+              "mean_xy_error_m_s": 0.03864935250690974,
+              "mean_yaw_error_rad_s": 0.05367598448360788,
+              "rms_xy_speed_m_s": 0.20086529511248846,
+              "rms_yaw_rate_rad_s": 0.06668315118481727,
+              "drift_m": 0.3858982643029428
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18808507358942833,
+              "mean_yaw_rate_rad_s": -0.36707267937479565,
+              "mean_xy_error_m_s": 0.05089956460436416,
+              "mean_yaw_error_rad_s": 0.055656599013693124,
+              "rms_xy_speed_m_s": 0.19227459660892532,
+              "rms_yaw_rate_rad_s": 0.37266050563376635,
+              "drift_m": 0.7986955754042342
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.016266101333788103,
+              "mean_yaw_rate_rad_s": 0.01785185992415092,
+              "mean_xy_error_m_s": 0.028256871471509952,
+              "mean_yaw_error_rad_s": 0.06589017597376796,
+              "rms_xy_speed_m_s": 0.030959522984494052,
+              "rms_yaw_rate_rad_s": 0.08439242736341793,
+              "drift_m": 0.05923658683078781
+            }
+          ],
+          "minimum_body_height_m": 0.20747825716347854,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 109,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.014390193376500791,
+              "mean_yaw_rate_rad_s": 0.014496864227689546,
+              "mean_xy_error_m_s": 0.02872796998617252,
+              "mean_yaw_error_rad_s": 0.06598075670737089,
+              "rms_xy_speed_m_s": 0.03169052365311717,
+              "rms_yaw_rate_rad_s": 0.08054243821139083,
+              "drift_m": 0.027971148339703756
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.20430655190434105,
+              "mean_yaw_rate_rad_s": 0.022033812863037017,
+              "mean_xy_error_m_s": 0.042879291158499123,
+              "mean_yaw_error_rad_s": 0.06304685577834364,
+              "rms_xy_speed_m_s": 0.20974633136647733,
+              "rms_yaw_rate_rad_s": 0.08226170580563703,
+              "drift_m": 1.0176057016192954
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14646155753855686,
+              "mean_yaw_rate_rad_s": 0.4006650008599838,
+              "mean_xy_error_m_s": 0.0301458020980111,
+              "mean_yaw_error_rad_s": 0.05455974739913651,
+              "rms_xy_speed_m_s": 0.15015807818232008,
+              "rms_yaw_rate_rad_s": 0.406799341980734,
+              "drift_m": 0.6194446452699035
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2043296951984162,
+              "mean_yaw_rate_rad_s": 0.04162119319991858,
+              "mean_xy_error_m_s": 0.03801594565677655,
+              "mean_yaw_error_rad_s": 0.05720180568220397,
+              "rms_xy_speed_m_s": 0.208701431423269,
+              "rms_yaw_rate_rad_s": 0.06853769780109732,
+              "drift_m": 0.40168108770036176
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.18996398162400516,
+              "mean_yaw_rate_rad_s": -0.36621375818921176,
+              "mean_xy_error_m_s": 0.05176288655574854,
+              "mean_yaw_error_rad_s": 0.05434975374722491,
+              "rms_xy_speed_m_s": 0.193872584211728,
+              "rms_yaw_rate_rad_s": 0.37148993860349694,
+              "drift_m": 0.8153324209008646
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.015395208473196611,
+              "mean_yaw_rate_rad_s": 0.015360778552604138,
+              "mean_xy_error_m_s": 0.028457845076083885,
+              "mean_yaw_error_rad_s": 0.06953447856565063,
+              "rms_xy_speed_m_s": 0.032460505372455345,
+              "rms_yaw_rate_rad_s": 0.08812906586278273,
+              "drift_m": 0.05515769547856674
+            }
+          ],
+          "minimum_body_height_m": 0.20813340590613094,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 110,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.013615371961718484,
+              "mean_yaw_rate_rad_s": 0.017587750427531686,
+              "mean_xy_error_m_s": 0.028564297178809178,
+              "mean_yaw_error_rad_s": 0.06789685903862251,
+              "rms_xy_speed_m_s": 0.031236004337929214,
+              "rms_yaw_rate_rad_s": 0.08410008031682462,
+              "drift_m": 0.02640435941057292
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.20572255053143942,
+              "mean_yaw_rate_rad_s": 0.03422220489108261,
+              "mean_xy_error_m_s": 0.04278514310450926,
+              "mean_yaw_error_rad_s": 0.06282289064595921,
+              "rms_xy_speed_m_s": 0.2111353062998924,
+              "rms_yaw_rate_rad_s": 0.08383315366851646,
+              "drift_m": 1.0225274577794223
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14913853242768635,
+              "mean_yaw_rate_rad_s": 0.4009200862965217,
+              "mean_xy_error_m_s": 0.029796400549902628,
+              "mean_yaw_error_rad_s": 0.054867607699671306,
+              "rms_xy_speed_m_s": 0.15262075877051293,
+              "rms_yaw_rate_rad_s": 0.4069558083922133,
+              "drift_m": 0.6196656656140244
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.19575915469959582,
+              "mean_yaw_rate_rad_s": 0.03703561866424592,
+              "mean_xy_error_m_s": 0.03665822896116997,
+              "mean_yaw_error_rad_s": 0.05537613894347511,
+              "rms_xy_speed_m_s": 0.19989091207685336,
+              "rms_yaw_rate_rad_s": 0.06808502477898187,
+              "drift_m": 0.38511954256057124
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.19178042922921715,
+              "mean_yaw_rate_rad_s": -0.3807464706819201,
+              "mean_xy_error_m_s": 0.05772707537247608,
+              "mean_yaw_error_rad_s": 0.0685523199589608,
+              "rms_xy_speed_m_s": 0.19759105013522085,
+              "rms_yaw_rate_rad_s": 0.3899633833482921,
+              "drift_m": 0.8404012345454034
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.015988242300698036,
+              "mean_yaw_rate_rad_s": 0.01900466776901919,
+              "mean_xy_error_m_s": 0.029309440240661136,
+              "mean_yaw_error_rad_s": 0.0708362129101486,
+              "rms_xy_speed_m_s": 0.03249982497644922,
+              "rms_yaw_rate_rad_s": 0.08998458599699174,
+              "drift_m": 0.05794477902463636
+            }
+          ],
+          "minimum_body_height_m": 0.20831995818194132,
+          "maximum_torque_nm": 2.5
+        }
+      ]
+    },
+    {
+      "training_seed": 44,
+      "experiment_id": "corgi-rl-walk-20261027-19854",
+      "iterations": 1800,
+      "transitions": 44236800,
+      "policy_sha256": "f98f462019153f06a8b29a971cad29f63e825421c3a81bdc72fd830f20a288be",
+      "pass_count": 10,
+      "fall_count": 0,
+      "evaluation_seeds": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "duration_s": 300,
+      "worst_segment_mean_xy_error_m_s": 0.0318112480122121,
+      "worst_segment_mean_yaw_error_rad_s": 0.05900012383290501,
+      "worst_stop_rms_speed_m_s": 0.024957127099849236,
+      "worst_stop_rms_yaw_rate_rad_s": 0.08437709045323903,
+      "worst_stop_drift_m": 0.034756360970593085,
+      "protocol": "flat-ground-v1",
+      "thresholds": {
+        "maximum_xy_error_m_s": 0.08,
+        "maximum_yaw_error_rad_s": 0.15,
+        "minimum_forward_speed_m_s": 0.14,
+        "minimum_signed_turn_rate_rad_s": 0.25,
+        "maximum_stop_rms_speed_m_s": 0.04,
+        "maximum_stop_rms_yaw_rad_s": 0.1,
+        "maximum_stop_drift_m": 0.12
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0056356308287795875,
+              "mean_yaw_rate_rad_s": 0.01484020639995537,
+              "mean_xy_error_m_s": 0.020635821300298045,
+              "mean_yaw_error_rad_s": 0.05901003756802009,
+              "rms_xy_speed_m_s": 0.02262378683175205,
+              "rms_yaw_rate_rad_s": 0.07270577934113079,
+              "drift_m": 0.021555282555330308
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2133955364492716,
+              "mean_yaw_rate_rad_s": -0.025119658711106618,
+              "mean_xy_error_m_s": 0.03011932563487715,
+              "mean_yaw_error_rad_s": 0.04630072704744161,
+              "rms_xy_speed_m_s": 0.21549101258234787,
+              "rms_yaw_rate_rad_s": 0.0544568608415357,
+              "drift_m": 1.0648579764404908
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14443095760856103,
+              "mean_yaw_rate_rad_s": 0.414269417387518,
+              "mean_xy_error_m_s": 0.023309238267932707,
+              "mean_yaw_error_rad_s": 0.05573968499871064,
+              "rms_xy_speed_m_s": 0.14664565298593024,
+              "rms_yaw_rate_rad_s": 0.4195204262891434,
+              "drift_m": 0.5728451527083721
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2094890387549614,
+              "mean_yaw_rate_rad_s": -0.011693350281782675,
+              "mean_xy_error_m_s": 0.025259799107380833,
+              "mean_yaw_error_rad_s": 0.042208860031936794,
+              "rms_xy_speed_m_s": 0.2110327416346645,
+              "rms_yaw_rate_rad_s": 0.0495297340493922,
+              "drift_m": 0.41498248969656854
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15240906022984677,
+              "mean_yaw_rate_rad_s": -0.3973058584653157,
+              "mean_xy_error_m_s": 0.028076557925263666,
+              "mean_yaw_error_rad_s": 0.04959387059531109,
+              "rms_xy_speed_m_s": 0.15561012001503638,
+              "rms_yaw_rate_rad_s": 0.40203532400933323,
+              "drift_m": 0.6737899752235271
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.0016111748254920228,
+              "mean_yaw_rate_rad_s": 0.013282539243558534,
+              "mean_xy_error_m_s": 0.020323829294586742,
+              "mean_yaw_error_rad_s": 0.06079297086433574,
+              "rms_xy_speed_m_s": 0.023364372685696314,
+              "rms_yaw_rate_rad_s": 0.08069087340470399,
+              "drift_m": 0.017775053838086367
+            }
+          ],
+          "minimum_body_height_m": 0.20808863204632405,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 102,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.004129488498711756,
+              "mean_yaw_rate_rad_s": 0.016875577701313316,
+              "mean_xy_error_m_s": 0.01967991436498483,
+              "mean_yaw_error_rad_s": 0.05762081981402411,
+              "rms_xy_speed_m_s": 0.021679238438044608,
+              "rms_yaw_rate_rad_s": 0.07083481787431199,
+              "drift_m": 0.013579224429396481
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.21259949660126493,
+              "mean_yaw_rate_rad_s": -0.022916518596607833,
+              "mean_xy_error_m_s": 0.03120300789808377,
+              "mean_yaw_error_rad_s": 0.04524323157388437,
+              "rms_xy_speed_m_s": 0.21495441705248458,
+              "rms_yaw_rate_rad_s": 0.053491115385193036,
+              "drift_m": 1.0600733024872773
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14183233430936001,
+              "mean_yaw_rate_rad_s": 0.4167475011541053,
+              "mean_xy_error_m_s": 0.024378989364084287,
+              "mean_yaw_error_rad_s": 0.05419607330130873,
+              "rms_xy_speed_m_s": 0.14411033162908593,
+              "rms_yaw_rate_rad_s": 0.42165310843285364,
+              "drift_m": 0.5683189346772527
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21237015597784925,
+              "mean_yaw_rate_rad_s": -0.021762121089452306,
+              "mean_xy_error_m_s": 0.030579854337219114,
+              "mean_yaw_error_rad_s": 0.04348783596318333,
+              "rms_xy_speed_m_s": 0.21454321911951468,
+              "rms_yaw_rate_rad_s": 0.05165755260064884,
+              "drift_m": 0.42192560611844343
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14838567270579467,
+              "mean_yaw_rate_rad_s": -0.39915954644630314,
+              "mean_xy_error_m_s": 0.027178256522243004,
+              "mean_yaw_error_rad_s": 0.047839621368883554,
+              "rms_xy_speed_m_s": 0.15157096817345958,
+              "rms_yaw_rate_rad_s": 0.40364634484066453,
+              "drift_m": 0.6497726509063402
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.0023808258805465984,
+              "mean_yaw_rate_rad_s": 0.013257255681575507,
+              "mean_xy_error_m_s": 0.020347648764415388,
+              "mean_yaw_error_rad_s": 0.06296295255408851,
+              "rms_xy_speed_m_s": 0.023914014179379245,
+              "rms_yaw_rate_rad_s": 0.08258803391743506,
+              "drift_m": 0.023923311101101827
+            }
+          ],
+          "minimum_body_height_m": 0.20804297756364454,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 103,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0032057566906285883,
+              "mean_yaw_rate_rad_s": 0.01920992685084746,
+              "mean_xy_error_m_s": 0.020055286342724143,
+              "mean_yaw_error_rad_s": 0.06003070000788282,
+              "rms_xy_speed_m_s": 0.022875657982139905,
+              "rms_yaw_rate_rad_s": 0.07385722141375732,
+              "drift_m": 0.01996097959151007
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2147178398799833,
+              "mean_yaw_rate_rad_s": -0.02480951956388882,
+              "mean_xy_error_m_s": 0.03133965954726228,
+              "mean_yaw_error_rad_s": 0.046126512468537835,
+              "rms_xy_speed_m_s": 0.21693674435451613,
+              "rms_yaw_rate_rad_s": 0.05454724839025568,
+              "drift_m": 1.0706122508749385
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14264084054018655,
+              "mean_yaw_rate_rad_s": 0.41651617676071034,
+              "mean_xy_error_m_s": 0.02339329243757566,
+              "mean_yaw_error_rad_s": 0.05851271754651093,
+              "rms_xy_speed_m_s": 0.14478615919635515,
+              "rms_yaw_rate_rad_s": 0.42203801868057855,
+              "drift_m": 0.5622922152804231
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21063680500328988,
+              "mean_yaw_rate_rad_s": -0.01373825341042833,
+              "mean_xy_error_m_s": 0.0257321811204166,
+              "mean_yaw_error_rad_s": 0.044414823569075515,
+              "rms_xy_speed_m_s": 0.21216039959926986,
+              "rms_yaw_rate_rad_s": 0.05096322575077606,
+              "drift_m": 0.41693463594116004
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15042003336538065,
+              "mean_yaw_rate_rad_s": -0.4008217434049184,
+              "mean_xy_error_m_s": 0.02828542384153331,
+              "mean_yaw_error_rad_s": 0.04680639849727809,
+              "rms_xy_speed_m_s": 0.1537066006623125,
+              "rms_yaw_rate_rad_s": 0.4051586701528596,
+              "drift_m": 0.6635551170152698
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.001874937364922446,
+              "mean_yaw_rate_rad_s": 0.013902622114666538,
+              "mean_xy_error_m_s": 0.02059472306018078,
+              "mean_yaw_error_rad_s": 0.06117802552166447,
+              "rms_xy_speed_m_s": 0.02339883257137767,
+              "rms_yaw_rate_rad_s": 0.08016485790898334,
+              "drift_m": 0.01676814526910096
+            }
+          ],
+          "minimum_body_height_m": 0.20794915460590058,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 104,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0051291832866648245,
+              "mean_yaw_rate_rad_s": 0.01721725931831549,
+              "mean_xy_error_m_s": 0.020310246296018502,
+              "mean_yaw_error_rad_s": 0.058443825108761095,
+              "rms_xy_speed_m_s": 0.022317742265486662,
+              "rms_yaw_rate_rad_s": 0.07153490647179894,
+              "drift_m": 0.018602565460904327
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.21579542369995391,
+              "mean_yaw_rate_rad_s": -0.02201787280711137,
+              "mean_xy_error_m_s": 0.03164895180575244,
+              "mean_yaw_error_rad_s": 0.04697787873413062,
+              "rms_xy_speed_m_s": 0.2179770639738618,
+              "rms_yaw_rate_rad_s": 0.05542062654866472,
+              "drift_m": 1.0764955796093838
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14284144700753193,
+              "mean_yaw_rate_rad_s": 0.4157331759629867,
+              "mean_xy_error_m_s": 0.022650414714229832,
+              "mean_yaw_error_rad_s": 0.05900012383290501,
+              "rms_xy_speed_m_s": 0.1447838832545337,
+              "rms_yaw_rate_rad_s": 0.42140218571413357,
+              "drift_m": 0.5623244743679368
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21264888638545265,
+              "mean_yaw_rate_rad_s": -0.01696018969852452,
+              "mean_xy_error_m_s": 0.030067553118220323,
+              "mean_yaw_error_rad_s": 0.043250088205786866,
+              "rms_xy_speed_m_s": 0.21476252455232736,
+              "rms_yaw_rate_rad_s": 0.052054011146232135,
+              "drift_m": 0.42216342356894404
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15303343275961065,
+              "mean_yaw_rate_rad_s": -0.39813473200353955,
+              "mean_xy_error_m_s": 0.02897844466505715,
+              "mean_yaw_error_rad_s": 0.048244122202247025,
+              "rms_xy_speed_m_s": 0.15638329362145753,
+              "rms_yaw_rate_rad_s": 0.402630379674878,
+              "drift_m": 0.6788833391408554
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.0014520812629754338,
+              "mean_yaw_rate_rad_s": 0.011298051927484978,
+              "mean_xy_error_m_s": 0.02020275498459635,
+              "mean_yaw_error_rad_s": 0.062207228909521295,
+              "rms_xy_speed_m_s": 0.023253278495390228,
+              "rms_yaw_rate_rad_s": 0.08155859923316666,
+              "drift_m": 0.024880290256166417
+            }
+          ],
+          "minimum_body_height_m": 0.20809910284775632,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 105,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0027725301090592326,
+              "mean_yaw_rate_rad_s": 0.016407001190421468,
+              "mean_xy_error_m_s": 0.020572612417307706,
+              "mean_yaw_error_rad_s": 0.06172380655705479,
+              "rms_xy_speed_m_s": 0.023327819635877614,
+              "rms_yaw_rate_rad_s": 0.07573827881716129,
+              "drift_m": 0.020719878349231616
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.21273505066740273,
+              "mean_yaw_rate_rad_s": -0.024536235987500536,
+              "mean_xy_error_m_s": 0.031186366114219894,
+              "mean_yaw_error_rad_s": 0.04319582017392441,
+              "rms_xy_speed_m_s": 0.21503213975074167,
+              "rms_yaw_rate_rad_s": 0.05227946754614936,
+              "drift_m": 1.0607700553713104
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.1402597153730203,
+              "mean_yaw_rate_rad_s": 0.41467320783275385,
+              "mean_xy_error_m_s": 0.023603144703801766,
+              "mean_yaw_error_rad_s": 0.05742815168164245,
+              "rms_xy_speed_m_s": 0.14231879890918966,
+              "rms_yaw_rate_rad_s": 0.4201500217252706,
+              "drift_m": 0.557962241866313
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2065604474516642,
+              "mean_yaw_rate_rad_s": -0.007762756500775359,
+              "mean_xy_error_m_s": 0.024123266558315173,
+              "mean_yaw_error_rad_s": 0.04413547575800178,
+              "rms_xy_speed_m_s": 0.20813936653236675,
+              "rms_yaw_rate_rad_s": 0.051317418329078386,
+              "drift_m": 0.409629010798451
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15063619818005797,
+              "mean_yaw_rate_rad_s": -0.3983236625473985,
+              "mean_xy_error_m_s": 0.028213815623101053,
+              "mean_yaw_error_rad_s": 0.0510057520166861,
+              "rms_xy_speed_m_s": 0.15397518868101792,
+              "rms_yaw_rate_rad_s": 0.403288813734305,
+              "drift_m": 0.6669974133590315
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.0018026945781645515,
+              "mean_yaw_rate_rad_s": 0.015385892966397816,
+              "mean_xy_error_m_s": 0.020687562823286737,
+              "mean_yaw_error_rad_s": 0.06232998138221077,
+              "rms_xy_speed_m_s": 0.023768939139285003,
+              "rms_yaw_rate_rad_s": 0.0824362402383692,
+              "drift_m": 0.01331843629863834
+            }
+          ],
+          "minimum_body_height_m": 0.2082239426611411,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 106,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.009271432968593061,
+              "mean_yaw_rate_rad_s": 0.02131811770482199,
+              "mean_xy_error_m_s": 0.022295150186984934,
+              "mean_yaw_error_rad_s": 0.06176018865525213,
+              "rms_xy_speed_m_s": 0.023567098608720725,
+              "rms_yaw_rate_rad_s": 0.07736744156426348,
+              "drift_m": 0.024903594431811407
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2125386767799594,
+              "mean_yaw_rate_rad_s": -0.019813873242268108,
+              "mean_xy_error_m_s": 0.031148385009105023,
+              "mean_yaw_error_rad_s": 0.047888550466123274,
+              "rms_xy_speed_m_s": 0.21484227570960532,
+              "rms_yaw_rate_rad_s": 0.056298479994892604,
+              "drift_m": 1.0594441819452691
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14283545654801832,
+              "mean_yaw_rate_rad_s": 0.4174694597360365,
+              "mean_xy_error_m_s": 0.024098946250416232,
+              "mean_yaw_error_rad_s": 0.05556665085103696,
+              "rms_xy_speed_m_s": 0.1451579597453147,
+              "rms_yaw_rate_rad_s": 0.4224840251965676,
+              "drift_m": 0.5711566490877557
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21861314153923497,
+              "mean_yaw_rate_rad_s": -0.024878248749644206,
+              "mean_xy_error_m_s": 0.03145510104779545,
+              "mean_yaw_error_rad_s": 0.04270250142351936,
+              "rms_xy_speed_m_s": 0.22053829914415818,
+              "rms_yaw_rate_rad_s": 0.051917351251304956,
+              "drift_m": 0.4331167521264635
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15298958185532854,
+              "mean_yaw_rate_rad_s": -0.4011125874599786,
+              "mean_xy_error_m_s": 0.027821482319893422,
+              "mean_yaw_error_rad_s": 0.04797066650073266,
+              "rms_xy_speed_m_s": 0.15609702907605277,
+              "rms_yaw_rate_rad_s": 0.40553762124502385,
+              "drift_m": 0.659943334373449
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.003982470931272452,
+              "mean_yaw_rate_rad_s": 0.013095594355086303,
+              "mean_xy_error_m_s": 0.021230801895494675,
+              "mean_yaw_error_rad_s": 0.06561653733901603,
+              "rms_xy_speed_m_s": 0.024957127099849236,
+              "rms_yaw_rate_rad_s": 0.08437709045323903,
+              "drift_m": 0.034756360970593085
+            }
+          ],
+          "minimum_body_height_m": 0.20784100042903328,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 107,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.003232452749440751,
+              "mean_yaw_rate_rad_s": 0.013357467861737035,
+              "mean_xy_error_m_s": 0.02128748799461942,
+              "mean_yaw_error_rad_s": 0.05697545943508128,
+              "rms_xy_speed_m_s": 0.024105098406937083,
+              "rms_yaw_rate_rad_s": 0.0723551236753187,
+              "drift_m": 0.02405488732777867
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2125417747636467,
+              "mean_yaw_rate_rad_s": -0.022695577862230316,
+              "mean_xy_error_m_s": 0.030006605828157822,
+              "mean_yaw_error_rad_s": 0.043899223315943064,
+              "rms_xy_speed_m_s": 0.21469474328922072,
+              "rms_yaw_rate_rad_s": 0.053364238490141304,
+              "drift_m": 1.0588139680586561
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14457002311630368,
+              "mean_yaw_rate_rad_s": 0.4164347704166635,
+              "mean_xy_error_m_s": 0.023400924933907823,
+              "mean_yaw_error_rad_s": 0.0533992433755278,
+              "rms_xy_speed_m_s": 0.1468490342749598,
+              "rms_yaw_rate_rad_s": 0.42114430867266983,
+              "drift_m": 0.5735167183659182
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.20718125875527357,
+              "mean_yaw_rate_rad_s": -0.00569457109244597,
+              "mean_xy_error_m_s": 0.02354333642676225,
+              "mean_yaw_error_rad_s": 0.04554811950407998,
+              "rms_xy_speed_m_s": 0.2087012410464592,
+              "rms_yaw_rate_rad_s": 0.05287587604646886,
+              "drift_m": 0.41101762162751865
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15496932943136085,
+              "mean_yaw_rate_rad_s": -0.3979466668848829,
+              "mean_xy_error_m_s": 0.028106929439938207,
+              "mean_yaw_error_rad_s": 0.04936310087020967,
+              "rms_xy_speed_m_s": 0.15801948532267798,
+              "rms_yaw_rate_rad_s": 0.40262082265154436,
+              "drift_m": 0.6792808250562388
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.00159690974902299,
+              "mean_yaw_rate_rad_s": 0.014732287253454195,
+              "mean_xy_error_m_s": 0.02098332094606146,
+              "mean_yaw_error_rad_s": 0.06268659210975151,
+              "rms_xy_speed_m_s": 0.02394386088041984,
+              "rms_yaw_rate_rad_s": 0.08082745305755903,
+              "drift_m": 0.012470076260609307
+            }
+          ],
+          "minimum_body_height_m": 0.20781468710948164,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 108,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0034612947253761612,
+              "mean_yaw_rate_rad_s": 0.01888506770872018,
+              "mean_xy_error_m_s": 0.020303024270831145,
+              "mean_yaw_error_rad_s": 0.059534364190607834,
+              "rms_xy_speed_m_s": 0.023090502022578098,
+              "rms_yaw_rate_rad_s": 0.0737201747551884,
+              "drift_m": 0.02086824856411124
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2121454745340314,
+              "mean_yaw_rate_rad_s": -0.024908662316618105,
+              "mean_xy_error_m_s": 0.029342153097950185,
+              "mean_yaw_error_rad_s": 0.04543901450219008,
+              "rms_xy_speed_m_s": 0.21420788087314863,
+              "rms_yaw_rate_rad_s": 0.053325080961405896,
+              "drift_m": 1.0575895818983332
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14290039349925182,
+              "mean_yaw_rate_rad_s": 0.4135364087774659,
+              "mean_xy_error_m_s": 0.022700197355300687,
+              "mean_yaw_error_rad_s": 0.05689042777242937,
+              "rms_xy_speed_m_s": 0.14489948713084366,
+              "rms_yaw_rate_rad_s": 0.4189865113322795,
+              "drift_m": 0.569508497975088
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21053124452356695,
+              "mean_yaw_rate_rad_s": -0.014038653741098982,
+              "mean_xy_error_m_s": 0.0263630505522557,
+              "mean_yaw_error_rad_s": 0.04193383702165269,
+              "rms_xy_speed_m_s": 0.21221571627215202,
+              "rms_yaw_rate_rad_s": 0.05160670307596379,
+              "drift_m": 0.4166282027173388
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15110077205124656,
+              "mean_yaw_rate_rad_s": -0.3977416718691816,
+              "mean_xy_error_m_s": 0.029347086231871454,
+              "mean_yaw_error_rad_s": 0.0489814031230724,
+              "rms_xy_speed_m_s": 0.15466276312939534,
+              "rms_yaw_rate_rad_s": 0.4024046212611745,
+              "drift_m": 0.6694911333077406
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.000465100914623274,
+              "mean_yaw_rate_rad_s": 0.013118282633868224,
+              "mean_xy_error_m_s": 0.020290945890065054,
+              "mean_yaw_error_rad_s": 0.05968017820428539,
+              "rms_xy_speed_m_s": 0.0232016842946042,
+              "rms_yaw_rate_rad_s": 0.07984314896125384,
+              "drift_m": 0.018442186011162112
+            }
+          ],
+          "minimum_body_height_m": 0.20793429555042037,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 109,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.0028984066852059532,
+              "mean_yaw_rate_rad_s": 0.019599401709377306,
+              "mean_xy_error_m_s": 0.019265668863843562,
+              "mean_yaw_error_rad_s": 0.06102952143299214,
+              "rms_xy_speed_m_s": 0.02162266480360438,
+              "rms_yaw_rate_rad_s": 0.07536811185325307,
+              "drift_m": 0.01416046518468845
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.21603599352270192,
+              "mean_yaw_rate_rad_s": -0.02612370936383934,
+              "mean_xy_error_m_s": 0.0318112480122121,
+              "mean_yaw_error_rad_s": 0.04673289254351634,
+              "rms_xy_speed_m_s": 0.21821038098945272,
+              "rms_yaw_rate_rad_s": 0.05525003576623231,
+              "drift_m": 1.0775703015629348
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.13941907292377057,
+              "mean_yaw_rate_rad_s": 0.415614494745323,
+              "mean_xy_error_m_s": 0.023643873682516754,
+              "mean_yaw_error_rad_s": 0.05717549224807776,
+              "rms_xy_speed_m_s": 0.1414246913392125,
+              "rms_yaw_rate_rad_s": 0.42101333115426853,
+              "drift_m": 0.5537778025484767
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.21155531848489198,
+              "mean_yaw_rate_rad_s": -0.017129138123883118,
+              "mean_xy_error_m_s": 0.027341147199792526,
+              "mean_yaw_error_rad_s": 0.044949512745927706,
+              "rms_xy_speed_m_s": 0.21328415198049483,
+              "rms_yaw_rate_rad_s": 0.05358243761673844,
+              "drift_m": 0.4188062350215416
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.15041269203273333,
+              "mean_yaw_rate_rad_s": -0.3999908057793657,
+              "mean_xy_error_m_s": 0.02769225393404129,
+              "mean_yaw_error_rad_s": 0.04961832077835051,
+              "rms_xy_speed_m_s": 0.15363438641399693,
+              "rms_yaw_rate_rad_s": 0.40455100339567657,
+              "drift_m": 0.6553853935826877
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": -0.0008868470748616268,
+              "mean_yaw_rate_rad_s": 0.01309462341465292,
+              "mean_xy_error_m_s": 0.02043571536780569,
+              "mean_yaw_error_rad_s": 0.06170986492744273,
+              "rms_xy_speed_m_s": 0.023819149548135708,
+              "rms_yaw_rate_rad_s": 0.08219601406713839,
+              "drift_m": 0.018075858230881692
+            }
+          ],
+          "minimum_body_height_m": 0.2079911746598166,
+          "maximum_torque_nm": 2.5
+        },
+        {
+          "seed": 110,
+          "passed": true,
+          "checks": {
+            "no_fall": true,
+            "xy_tracking": true,
+            "yaw_tracking": true,
+            "forward_motion": true,
+            "both_turn_directions": true,
+            "stop_speed": true,
+            "stop_rotation": true,
+            "stop_drift": true
+          },
+          "first_fall_s": null,
+          "segments": [
+            {
+              "name": "settle",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.003750168632707045,
+              "mean_yaw_rate_rad_s": 0.013442212065981675,
+              "mean_xy_error_m_s": 0.021836644453217657,
+              "mean_yaw_error_rad_s": 0.05744864486280915,
+              "rms_xy_speed_m_s": 0.02454062717752235,
+              "rms_yaw_rate_rad_s": 0.06979082518919048,
+              "drift_m": 0.0260942922827542
+            },
+            {
+              "name": "forward",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.2136574869833393,
+              "mean_yaw_rate_rad_s": -0.022098958881766932,
+              "mean_xy_error_m_s": 0.029616074432012317,
+              "mean_yaw_error_rad_s": 0.043501336381297634,
+              "rms_xy_speed_m_s": 0.2156347744849017,
+              "rms_yaw_rate_rad_s": 0.052985951660211694,
+              "drift_m": 1.0657216799089109
+            },
+            {
+              "name": "turn_left",
+              "command": [
+                0.15,
+                0,
+                0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14314471225095135,
+              "mean_yaw_rate_rad_s": 0.4152956623388762,
+              "mean_xy_error_m_s": 0.023387294585064312,
+              "mean_yaw_error_rad_s": 0.05507764115231249,
+              "rms_xy_speed_m_s": 0.14530151156318274,
+              "rms_yaw_rate_rad_s": 0.42038031035819884,
+              "drift_m": 0.5714650865599177
+            },
+            {
+              "name": "forward_again",
+              "command": [
+                0.2,
+                0,
+                0
+              ],
+              "samples": 100,
+              "mean_forward_speed_m_s": 0.2041842013784109,
+              "mean_yaw_rate_rad_s": -0.00048419019225313985,
+              "mean_xy_error_m_s": 0.023081995265584423,
+              "mean_yaw_error_rad_s": 0.04943497901992689,
+              "rms_xy_speed_m_s": 0.205688343701295,
+              "rms_yaw_rate_rad_s": 0.05735563763610425,
+              "drift_m": 0.40509081370252964
+            },
+            {
+              "name": "turn_right",
+              "command": [
+                0.15,
+                0,
+                -0.4
+              ],
+              "samples": 250,
+              "mean_forward_speed_m_s": 0.14920726064835962,
+              "mean_yaw_rate_rad_s": -0.397103868198256,
+              "mean_xy_error_m_s": 0.028787169176523606,
+              "mean_yaw_error_rad_s": 0.049142281227245635,
+              "rms_xy_speed_m_s": 0.1526812924879784,
+              "rms_yaw_rate_rad_s": 0.4017881013918342,
+              "drift_m": 0.6559886118268169
+            },
+            {
+              "name": "stop",
+              "command": [
+                0,
+                0,
+                0
+              ],
+              "samples": 200,
+              "mean_forward_speed_m_s": 0.0017178069859213262,
+              "mean_yaw_rate_rad_s": 0.01423072431437876,
+              "mean_xy_error_m_s": 0.020665394049612172,
+              "mean_yaw_error_rad_s": 0.060654513372301294,
+              "rms_xy_speed_m_s": 0.023619059962069856,
+              "rms_yaw_rate_rad_s": 0.0813849594577735,
+              "drift_m": 0.01730432811549292
+            }
+          ],
+          "minimum_body_height_m": 0.20809233534145927,
+          "maximum_torque_nm": 2.5
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Estimated physical parameters",
+    "Flat ground only; no pushes or hardware randomization",
+    "Stopping retains small residual movement",
+    "No hardware, RK3576 or IMPO validation"
+  ]
+}

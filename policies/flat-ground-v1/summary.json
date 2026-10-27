@@ -1,0 +1,8 @@
+{
+  "iterations": 1200,
+  "transitions": 29491200,
+  "max_policy_parameter_change": 0.26544854044914246,
+  "onnx_max_abs_error": 2.384185791015625e-07,
+  "elapsed_s": 327.49302259180695,
+  "convergence_claim": false
+}

@@ -21,11 +21,19 @@ def mjcf(spec: RobotSpec, *, scene=True):
                   condim="3", contype="1", conaffinity="1")
     visual = ET.SubElement(root, "visual")
     ET.SubElement(visual, "global", offwidth="960", offheight="720")
+    ET.SubElement(visual, "headlight", ambient="0.45 0.45 0.45",
+                  diffuse="0.6 0.6 0.6", specular="0.1 0.1 0.1")
+    if scene:
+        asset = ET.SubElement(root, "asset")
+        ET.SubElement(asset, "texture", name="ground_grid", type="2d", builtin="checker",
+                      width="512", height="512", rgb1="0.8 0.85 0.9", rgb2="0.55 0.63 0.7")
+        ET.SubElement(asset, "material", name="ground", texture="ground_grid",
+                      texrepeat="2 2", texuniform="true", reflectance="0")
     world = ET.SubElement(root, "worldbody")
     if scene:
         ET.SubElement(world, "light", pos="0 -2 3", dir="0 0 -1")
         ET.SubElement(world, "geom", name="floor", type="plane", size="0 0 0.05",
-                      rgba="0.18 0.21 0.24 1")
+                      material="ground", rgba="1 1 1 1")
     base = ET.SubElement(world, "body", name="base", pos=f"0 0 {spec.spawn_height_m}")
     ET.SubElement(base, "freejoint", name="root")
     ET.SubElement(base, "geom", name="base_collision", type="box",

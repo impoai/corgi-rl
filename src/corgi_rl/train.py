@@ -43,19 +43,25 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
     env = ManagerBasedRlEnv(make_env_cfg(spec, task, num_envs, seed), device="cuda:0")
     wrapped = RslRlVecEnvWrapper(env, clip_actions=1.)
     runner = MjlabOnPolicyRunner(wrapped, asdict(cfg), log_dir=str(out), device="cuda:0")
+    completed_before = 0
     if resume:
         manifest = json.loads(Path(resume).with_name("manifest.json").read_text())
         if manifest["spec_sha256"] != spec.digest or manifest["task"] != task:
             raise ValueError("Resume task/specification differs from the checkpoint")
         runner.load(str(resume))
+        # rsl_rl saves the zero-based index of the last completed update.
+        runner.current_learning_iteration += 1
+        completed_before = runner.current_learning_iteration
     params_before = [p.detach().clone() for p in runner.alg.get_policy().parameters()]
     metadata = {**spec.manifest(), "task": task, "seed": seed, "device": "cuda:0",
                 "gpu": torch.cuda.get_device_name(0), "num_envs": num_envs,
                 "rollout_steps": steps, "requested_iterations": iterations,
+                "completed_iterations_before_run": completed_before,
+                "total_requested_iterations": completed_before + iterations,
                 "resume": str(resume) if resume else None, "ppo": asdict(cfg),
                 "versions": {p: version(p) for p in
                              ("mjlab", "mujoco", "mujoco-warp", "warp-lang", "torch", "rsl-rl-lib")},
-                "claim": "pipeline validation only; no convergence claim"}
+                "claim": "training run; capability requires separate evaluation"}
     write_json(out / "manifest.json", metadata)
     write_json(out / "robot-spec.json", spec.model_dump())
     events = out / "events.jsonl"
@@ -81,7 +87,8 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
             raise FloatingPointError("PPO returned nonfinite losses")
         objective = (losses["surrogate"] + cfg.algorithm.value_loss_coef * losses["value"]
                      - cfg.algorithm.entropy_coef * losses["entropy"])
-        emit({"type": "update", "step": updates, "loss": objective,
+        emit({"type": "update", "step": updates,
+              "total_completed_iterations": completed_before + updates, "loss": objective,
               "loss_definition": "mean clipped surrogate + value_coef*value - entropy_coef*entropy",
               "losses": losses, "lr": float(runner.alg.learning_rate),
               "transitions": updates * num_envs * steps,
@@ -115,6 +122,8 @@ def train(spec, *, task="stand", output="runs/stand", iterations=1000,
                                    obs["actor"][0:1].detach().cpu().numpy()})[0]
         np.testing.assert_allclose(actual, expected, rtol=1e-4, atol=1e-5)
         summary = {"iterations": updates, "transitions": updates * num_envs * steps,
+                   "completed_iterations_before_run": completed_before,
+                   "total_completed_iterations": completed_before + updates,
                    "max_policy_parameter_change": delta,
                    "onnx_max_abs_error": float(np.abs(actual - expected).max()),
                    "elapsed_s": time.monotonic() - started, "convergence_claim": False}

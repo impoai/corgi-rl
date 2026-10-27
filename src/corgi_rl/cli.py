@@ -27,6 +27,14 @@ def main():
     evaluate.add_argument("--seconds", type=float, default=5.)
     evaluate.add_argument("--seed", type=int, default=42)
     evaluate.add_argument("--video", type=Path)
+    bench = sub.add_parser("benchmark")
+    bench.add_argument("--policy", type=Path, required=True)
+    bench.add_argument("--output", type=Path, required=True)
+    bench.add_argument("--seeds", nargs="+", type=int, default=list(range(101, 111)))
+    bench.add_argument("--video-seed", type=int)
+    export = sub.add_parser("export")
+    export.add_argument("--checkpoint", type=Path, required=True)
+    export.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     spec = load_spec(args.spec)
     if args.command == "model":
@@ -40,6 +48,15 @@ def main():
         kwargs = vars(args).copy()
         del kwargs["command"], kwargs["spec"]
         print(json.dumps(train(spec, **kwargs), indent=2))
+    elif args.command == "export":
+        from .export import export_checkpoint
+        print(json.dumps(export_checkpoint(spec, checkpoint=args.checkpoint,
+                                           output=args.output), indent=2))
+    elif args.command == "benchmark":
+        from .benchmark import benchmark
+        result = benchmark(spec, policy=args.policy, seeds=args.seeds,
+                           output=args.output, video_seed=args.video_seed)
+        print(json.dumps({k: v for k, v in result.items() if k != "episodes"}, indent=2))
     else:
         from .native import evaluate
         kwargs = vars(args).copy()
