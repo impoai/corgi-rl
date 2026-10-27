@@ -4,6 +4,11 @@
 
 **A quadruped with a local motion policy and planned IMPO integration.**
 
+**[Watch all three policies side by side →](https://corgi-rl-walking.meowooof.chatgpt.site)**
+
+Public video demo — no sign-in required. Play forward motion, left/right turns
+and stopping together in your browser.
+
 Corgi RL is an open-source, low-cost **12-DoF quadruped** project. It brings a
 calibratable robot model, stand and walk tasks, and a shared policy interface
 into one repository. The planned hardware uses smart servos and a Rockchip
@@ -102,7 +107,8 @@ updates and needed 600 additional updates before final testing. The rewards,
 PPO settings and acceptance thresholds were unchanged. See the
 [full results and failed qualification](docs/status.md).
 
-[Watch the complete 30-second replay](docs/assets/walking-train42.mp4) ·
+[Watch the public side-by-side demo](https://corgi-rl-walking.meowooof.chatgpt.site) ·
+[Download the 30-second replay](docs/assets/walking-train42.mp4) ·
 [Download the policy and checkpoint](policies/flat-ground-v1/) ·
 [Test protocol](docs/walking-validation.md) · [Detailed validation](docs/status.md)
 
