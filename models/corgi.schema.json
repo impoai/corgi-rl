@@ -1,0 +1,313 @@
+{
+  "$defs": {
+    "Geometry": {
+      "additionalProperties": false,
+      "properties": {
+        "body_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Body Length M",
+          "type": "number"
+        },
+        "body_width_m": {
+          "exclusiveMinimum": 0,
+          "title": "Body Width M",
+          "type": "number"
+        },
+        "body_height_m": {
+          "exclusiveMinimum": 0,
+          "title": "Body Height M",
+          "type": "number"
+        },
+        "body_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Body Mass Kg",
+          "type": "number"
+        },
+        "hip_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Hip Length M",
+          "type": "number"
+        },
+        "upper_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Upper Length M",
+          "type": "number"
+        },
+        "lower_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Lower Length M",
+          "type": "number"
+        },
+        "hip_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Hip Mass Kg",
+          "type": "number"
+        },
+        "upper_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Upper Mass Kg",
+          "type": "number"
+        },
+        "lower_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Lower Mass Kg",
+          "type": "number"
+        },
+        "foot_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Foot Mass Kg",
+          "type": "number"
+        },
+        "link_radius_m": {
+          "exclusiveMinimum": 0,
+          "title": "Link Radius M",
+          "type": "number"
+        },
+        "foot_radius_m": {
+          "exclusiveMinimum": 0,
+          "title": "Foot Radius M",
+          "type": "number"
+        }
+      },
+      "required": [
+        "body_length_m",
+        "body_width_m",
+        "body_height_m",
+        "body_mass_kg",
+        "hip_length_m",
+        "upper_length_m",
+        "lower_length_m",
+        "hip_mass_kg",
+        "upper_mass_kg",
+        "lower_mass_kg",
+        "foot_mass_kg",
+        "link_radius_m",
+        "foot_radius_m"
+      ],
+      "title": "Geometry",
+      "type": "object"
+    },
+    "Inertial": {
+      "additionalProperties": false,
+      "description": "Optional measured principal inertia, in body coordinates (no rotation).",
+      "properties": {
+        "mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Mass Kg",
+          "type": "number"
+        },
+        "com_m": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Com M",
+          "type": "array"
+        },
+        "diagonal_kg_m2": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Diagonal Kg M2",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mass_kg",
+        "com_m",
+        "diagonal_kg_m2"
+      ],
+      "title": "Inertial",
+      "type": "object"
+    },
+    "Joint": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "motor_id": {
+          "maximum": 253,
+          "minimum": 1,
+          "title": "Motor Id",
+          "type": "integer"
+        },
+        "direction": {
+          "enum": [
+            -1,
+            1
+          ],
+          "title": "Direction",
+          "type": "integer"
+        },
+        "zero_rad": {
+          "title": "Zero Rad",
+          "type": "number"
+        },
+        "lower_rad": {
+          "title": "Lower Rad",
+          "type": "number"
+        },
+        "upper_rad": {
+          "title": "Upper Rad",
+          "type": "number"
+        },
+        "home_rad": {
+          "title": "Home Rad",
+          "type": "number"
+        },
+        "action_scale_rad": {
+          "exclusiveMinimum": 0,
+          "title": "Action Scale Rad",
+          "type": "number"
+        },
+        "kp_nm_per_rad": {
+          "exclusiveMinimum": 0,
+          "title": "Kp Nm Per Rad",
+          "type": "number"
+        },
+        "kd_nm_s_per_rad": {
+          "minimum": 0,
+          "title": "Kd Nm S Per Rad",
+          "type": "number"
+        },
+        "effort_limit_nm": {
+          "exclusiveMinimum": 0,
+          "title": "Effort Limit Nm",
+          "type": "number"
+        },
+        "armature_kg_m2": {
+          "minimum": 0,
+          "title": "Armature Kg M2",
+          "type": "number"
+        },
+        "frictionloss_nm": {
+          "minimum": 0,
+          "title": "Frictionloss Nm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "motor_id",
+        "direction",
+        "zero_rad",
+        "lower_rad",
+        "upper_rad",
+        "home_rad",
+        "action_scale_rad",
+        "kp_nm_per_rad",
+        "kd_nm_s_per_rad",
+        "effort_limit_nm",
+        "armature_kg_m2",
+        "frictionloss_nm"
+      ],
+      "title": "Joint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "calibration_status": {
+      "enum": [
+        "estimated",
+        "measured"
+      ],
+      "title": "Calibration Status",
+      "type": "string"
+    },
+    "physics_dt_s": {
+      "exclusiveMinimum": 0,
+      "title": "Physics Dt S",
+      "type": "number"
+    },
+    "control_decimation": {
+      "exclusiveMinimum": 0,
+      "title": "Control Decimation",
+      "type": "integer"
+    },
+    "spawn_height_m": {
+      "exclusiveMinimum": 0,
+      "title": "Spawn Height M",
+      "type": "number"
+    },
+    "floor_friction": {
+      "exclusiveMinimum": 0,
+      "title": "Floor Friction",
+      "type": "number"
+    },
+    "joint_velocity_observation_scale": {
+      "exclusiveMinimum": 0,
+      "title": "Joint Velocity Observation Scale",
+      "type": "number"
+    },
+    "geometry": {
+      "$ref": "#/$defs/Geometry"
+    },
+    "joints": {
+      "items": {
+        "$ref": "#/$defs/Joint"
+      },
+      "title": "Joints",
+      "type": "array"
+    },
+    "inertial_overrides": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Inertial"
+      },
+      "title": "Inertial Overrides",
+      "type": "object"
+    },
+    "unmeasured": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unmeasured",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "name",
+    "calibration_status",
+    "physics_dt_s",
+    "control_decimation",
+    "spawn_height_m",
+    "floor_friction",
+    "joint_velocity_observation_scale",
+    "geometry",
+    "joints",
+    "unmeasured"
+  ],
+  "title": "RobotSpec",
+  "type": "object"
+}
